@@ -1,0 +1,30 @@
+<div class="vehicle-search amfinder-vertical">
+    <form action="#" id="ecommerce121-vehicle-search-form" data-bind="submit: onSubmitForm">
+        <!-- ko foreach: { data: activeDropdowns, as: 'dropdown'  } -->
+        <div class="field">
+            <label data-bind="i18n: dropdown.label,
+                              attr:{
+                                for: 'dropdown-search-' + dropdown.dropdownId,
+                                class: dropdown.required ? 'dropdown-title required' : 'dropdown-title'
+                              }"></label>
+            <select data-bind="attr:{
+                            name: 'garage_vehicle[' + dropdown.dropdownId + ']',
+                            'data-dropdown-id': dropdown.dropdownId,
+                            id: 'dropdown-search-' + dropdown.dropdownId,
+                            required: dropdown.required,
+                            'data-role': 'vehicle-search-element'
+                        },
+                        options: dropdown.options,
+                        optionsText: 'label',
+                        optionsValue: 'valueId',
+                        value: dropdown.selected,
+                        disable: dropdown.options.length === 0,
+                        optionsCaption: 'Choose a ' + dropdown.label,
+                        event: { change: $parent.changeDropdown.bind($parent) }">
+            </select>
+        </div>
+        <!-- /ko -->
+        <button class="button action primary" data-bind="i18n: 'Search', disable: disableSubmit" type="submit"></button>
+        <p class="required-note">* Required Fields</p>
+    </form>
+</div>

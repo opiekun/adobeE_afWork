@@ -1,0 +1,32 @@
+<?php
+/**
+ * @var Ecommerce121\NewsletterSignup\Block\Widget\Form $block
+ * @var Magento\Framework\Escaper $escaper
+ * @var Ecommerce121\Garage\ViewModel\Customer\Account\FormData $formData
+ */
+$formData = $block->getFormData();
+?>
+<script type="text/x-magento-init">
+{
+    "*": {
+        "Magento_Ui/js/core/app": {
+            "components": {
+                "ecommerce121-newsletter-signup-form": {
+                    "component": "Ecommerce121_NewsletterSignup/js/newsletter-signup-form",
+                    "template": "Ecommerce121_NewsletterSignup/newsletter_signup_form",
+                    "dropdowns": <?= $formData->getDropdowns(true) ?>,
+                    "values": <?= $formData->getValues(true) ?>,
+                    "title": "<?= $escaper->escapeHtml($block->getData('title')) ?>",
+                    "newsletterSignupUrl": "<?= $escaper->escapeHtml($block->getUrl('newsletter_signup/index/submit')) ?>",
+                    "redirectUrl": "<?= $escaper->escapeHtml($block->getUrl('signup/thank-you')) ?>"
+                }
+            }
+        }
+    }
+}
+</script>
+
+<div class="ecommerce121-newsletter-signup-form"
+     data-bind="scope: 'ecommerce121-newsletter-signup-form'">
+    <!-- ko template: getTemplate() --><!-- /ko -->
+</div>

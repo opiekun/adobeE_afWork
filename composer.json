@@ -1,0 +1,180 @@
+{
+    "name": "magento/magento-cloud-template",
+    "description": "eCommerce Platform for Growth (Enterprise Edition)",
+    "type": "project",
+    "version": "2.4.2",
+    "license": "OSL-3.0",
+    "config": {
+        "preferred-install": "dist",
+        "sort-packages": true,
+        "allow-plugins": {
+            "magento/magento-composer-installer": true,
+            "laminas/laminas-dependency-plugin": true,
+            "magento/inventory-composer-installer": true,
+            "cweagans/composer-patches": true
+        }
+    },
+    "repositories": {
+        "repo": {
+            "type": "composer",
+            "url": "https://repo.magento.com"
+        },
+        "ecommerce121": {
+            "type": "composer",
+            "url": "https://composer.121ecommerce.com/"
+        },
+        "amasty": {
+            "type": "composer",
+            "url": "https://composer.amasty.com/enterprise/"
+        },
+        "wyomind": {
+            "type": "composer",
+            "url": "https://repo.wyomind.com"
+        },
+        "magefan": {
+            "type": "composer",
+            "url": "https://magefan.com/repo/"
+        },
+        "redchamps": {
+            "type": "composer",
+            "url": "https://repo.redchamps.com/repositories/clientadvocates@121ecommerce.com-DJPcG1KkY5igAY18vgZNyr7yj3s8gs8L"
+        }
+    },
+    "require": {
+        "affirm/magento2": "^3.0",
+        "amasty/amp": "^1.3",
+        "amasty/base": "^1.12",
+        "amasty/feed": "^2.6",
+        "amasty/finder": "^1.11",
+        "amasty/gdpr-cookie": "^2.5",
+        "amasty/label": "^1.13",
+        "amasty/mega-menu": "^2.2",
+        "amasty/mega-menu-graphql": "^1.0",
+        "amasty/mega-menu-page-builder": "^1.0",
+        "amasty/module-ccpa": "^1.3",
+        "amasty/module-gdpr": "^2.6",
+        "amasty/module-grouped-options": "^1.0",
+        "amasty/module-import-export": "^1.4",
+        "amasty/module-import-export-core": "^1.0",
+        "amasty/module-order-import": "1.8.0",
+        "amasty/module-page-speed-optimizer": "^2.1",
+        "amasty/module-seo-toolkit": "^1.18",
+        "amasty/module-shipping-suite": "^1.0",
+        "amasty/module-single-step-checkout": "^3.1",
+        "amasty/module-special-promo-pro": "^2.8",
+        "amasty/module-store-pickup-with-locator": "^2.5",
+        "amasty/orderattr": "^3.7",
+        "amasty/payrestriction": "^2.3",
+        "amasty/pgrid": "^1.10",
+        "amasty/preorder": "^1.4",
+        "amasty/promo": "^2.10",
+        "amasty/shiprules": "^2.6",
+        "amasty/shopby": "^2.17",
+        "amasty/shopby-graphql": "^1.0",
+        "amasty/shopby-root": "^2.9",
+        "amasty/shopby-seo": "^2.11",
+        "amasty/social-login": "^1.8",
+        "amasty/social-login-apple-id": "^1.0",
+        "amasty/stockstatus": "^2.3",
+        "amasty/stockstatus-graphql": "^1.0",
+        "avalara/avatax-magento": "2.2.4",
+        "cweagans/composer-patches": "^1.7",
+        "ecommerce121/basket": "^1.0",
+        "ecommerce121/master-coupon": "^1.0",
+        "ecommerce121/product-variations": "^1.2",
+        "hybridauth/hybridauth": "~3.3",
+        "magefan/module-convert-guest-to-customer": "^2.0.20",
+        "magento/magento-cloud-metapackage": ">=2.4.2 <2.4.3",
+        "magento/module-page-builder-product-recommendations": "^1.2",
+        "magento/module-visual-product-recommendations": "^1.2",
+        "magento/product-recommendations": "^3.3",
+        "mageworx/module-advancedproductoptions": "^2.33",
+        "redchamps/module-share-cart": "^1.3",
+        "taxjar/module-taxjar": "^1.7",
+        "wyomind/googlecustomerreviews": "^3.5",
+        "zonos/checkout": "2.2.20",
+        "zonos/hello": "^2.0"
+    },
+    "suggest": {
+        "ext-pcntl": "Need for run processes in parallel mode"
+    },
+    "conflict": {
+        "gene/bluefoot": "*"
+    },
+    "autoload": {
+        "psr-4": {
+            "Magento\\Setup\\": "setup/src/Magento/Setup/",
+            "Magento\\": "app/code/Magento/",
+            "Zend\\Mvc\\Controller\\": "setup/src/Zend/Mvc/Controller/"
+        },
+        "psr-0": {
+            "": [
+                "app/code/",
+                "generated/code/"
+            ]
+        },
+        "files": [
+            "app/etc/NonComposerComponentRegistration.php"
+        ],
+        "exclude-from-classmap": [
+            "**/dev/**",
+            "**/update/**",
+            "**/Test/**"
+        ]
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Magento\\Sniffs\\": "dev/tests/static/framework/Magento/Sniffs/",
+            "Magento\\Tools\\": "dev/tools/Magento/Tools/",
+            "Magento\\Tools\\Sanity\\": "dev/build/publication/sanity/Magento/Tools/Sanity/",
+            "Magento\\TestFramework\\Inspection\\": "dev/tests/static/framework/Magento/TestFramework/Inspection/",
+            "Magento\\TestFramework\\Utility\\": "dev/tests/static/framework/Magento/TestFramework/Utility/"
+        }
+    },
+    "minimum-stability": "alpha",
+    "prefer-stable": true,
+    "extra": {
+        "component_paths": {
+            "trentrichardson/jquery-timepicker-addon": "lib/web/jquery/jquery-ui-timepicker-addon.js",
+            "components/jquery": [
+                "lib/web/jquery.js",
+                "lib/web/jquery/jquery.min.js",
+                "lib/web/jquery/jquery-migrate.js"
+            ],
+            "blueimp/jquery-file-upload": "lib/web/jquery/fileUploader",
+            "components/jqueryui": [
+                "lib/web/jquery/jquery-ui.js"
+            ],
+            "twbs/bootstrap": [
+                "lib/web/jquery/jquery.tabs.js"
+            ],
+            "tinymce/tinymce": "lib/web/tiny_mce_4"
+        },
+        "magento-force": true,
+        "magento-deploystrategy": "copy",
+        "composer-exit-on-patch-failure": true,
+        "patches": {
+            "ecommerce121/basket": {
+                "Fix Amasty Pgrid inline save conflict": "patches/composer/basket_pgrid_conflict.patch"
+            },
+            "magento/module-swat": {
+                "swat report link results in an error page.": "patches/composer/MDVA-38526_EE_2.4.1-p1_COMPOSER_v3.patch"
+            },
+            "amasty/shopby": {
+                "sorting bug": "patches/composer/amasty.shopby.AFE-405.patch"
+            },
+            "amasty/module-import-core": {
+                "Amasty import core infinite loop path": "patches/composer/338799-ImportCore.patch"
+            },
+            "amasty/finder": {
+                "Fix order rows on PDP": "patches/composer/amasty_finder_fix_order.patch"
+            }
+        }
+    },
+    "require-dev": {
+        "ecommerce121/phpstan-magento2": "^1.0",
+        "enanobots/m2-datapatchcreator": "^1.0",
+        "magento/magento-coding-standard": "^6.0",
+        "sebastian/phpcpd": "^6.0"
+    }
+}

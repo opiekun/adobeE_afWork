@@ -1,0 +1,43 @@
+//
+//  Common
+//  _____________________________________________
+
+& when (@media-common = true) {
+    .ecommerce121-partfinder {
+        display: flex;
+        align-items: flex-start;
+        justify-content: flex-start;
+        list-style: none;
+        width: 100%;
+        margin: 30px 0 0;
+        padding: 0;
+        .ecommerce121-am-item {
+            list-style: none;
+            min-width: 200px;
+            width: 100%;
+            margin: 0 10px 0 0;
+            &:last-child {
+                margin-right: 0;
+            }
+        }
+    }
+}
+
+//
+//  Mobile
+//  _____________________________________________
+
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__m) {
+    div {
+        .ecommerce121-partfinder {
+            margin: 15px 0 0;
+            flex-wrap: wrap;
+            .ecommerce121-am-item {
+                margin: 0 0 10px 0;
+                &:last-child {
+                    margin-bottom: 0;
+                }
+            }
+        }
+    }
+}

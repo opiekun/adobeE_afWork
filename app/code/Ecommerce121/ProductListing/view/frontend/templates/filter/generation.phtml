@@ -1,0 +1,33 @@
+<?php
+/**
+ * @var Magento\Framework\View\Element\Template $block
+ * @var Ecommerce121\ProductListing\ViewModel\FilterGeneration $filter
+ * @var Magento\Framework\Escaper $escaper
+ */
+$filter = $block->getFilter();
+
+$currentCategory = $filter->getCurrentCategory();
+if (!$currentCategory || !$currentCategory->getData('has_generation_filter')) {
+    return;
+}
+?>
+
+<label for="ecommerce121-generation"><?= $escaper->escapeHtml($filter->getLabel()) ?></label>
+
+<select name="generation" id="ecommerce121-generation">
+    <?php foreach ($filter->getOptions() as $option): ?>
+    <option value="<?= $escaper->escapeHtml($option['url']) ?>"
+        <?= $escaper->escapeHtml($option['selected']) ?>><?= $escaper->escapeHtml($option['name']) ?></option>
+    <?php endforeach; ?>
+</select>
+
+<script>
+require(['jquery'], function ($) {
+    $("#ecommerce121-generation").change(function () {
+        let url = $(this).val();
+        if (url) {
+            window.location.href = url;
+        }
+    });
+});
+</script>

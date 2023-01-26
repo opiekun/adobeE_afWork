@@ -1,0 +1,13 @@
+<!-- ko if: isLoggedInCustomer() -->
+    <div class="garage-search-filter">
+        <div class="garage-title">My Garage</div>
+
+        <div class="dropdown-element">
+            <select data-bind="options: options,
+                           optionsText: 'label',
+                           optionsValue: 'url',
+                           optionsCaption: 'Select Vehicle',
+                           event: { change: search }"></select>
+        </div>
+    </div>
+<!-- /ko -->

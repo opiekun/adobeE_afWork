@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <section id="sales" translate="label" showInDefault="1" showInWebsite="1"
+                 showInStore="1">
+            <resource>Ecommerce121_SalesPartialShipments::sales</resource>
+            <group id="partial_shipments" translate="label" type="select" sortOrder="50" showInDefault="1"
+                   showInWebsite="0" showInStore="0">
+                <label>Partial Shipments</label>
+                <field id="enabled" translate="label" type="select" sortOrder="100" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>Enable</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="cron_schedule" translate="label comment" type="text" sortOrder="120" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>Cron Schedule</label>
+                    <comment><![CDATA[<pre>
+* * * * *
+┃ ┃ ┃ ┃ ┃
+┃ ┃ ┃ ┃ ┗━━━━ Day of the Week   (range: 1-7, 1 standing for Monday)
+┃ ┃ ┃ ┗━━━━━━ Month of the Year (range: 1-12)
+┃ ┃ ┗━━━━━━━━ Day of the Month  (range: 1-31)
+┃ ┗━━━━━━━━━━ Hour              (range: 0-23)
+┗━━━━━━━━━━━━ Minute            (range: 0-59)
+Example: 0 2 * * * Daily at 2 AM
+
+                    </pre>]]></comment>
+                    <depends>
+                        <field id="export_enable">1</field>
+                    </depends>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

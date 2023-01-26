@@ -1,0 +1,16 @@
+<?php
+/** @var Magento\Framework\View\Element\Template $block */
+/** @var Magento\Framework\Escaper $escaper */
+?>
+<div class="vehicle-wrapper">
+    <strong class="vehicle-button button primary"><?= $escaper->escapeHtml(__('SEARCH BY VEHICLE')) ?></strong>
+    <div class="vehicle-dropdown" data-target="dropdown">
+        <?= $block->getChildHtml(''); ?>
+    </div>
+</div>
+<span class="vehicle-icon"
+      data-toggle="dropdown"
+      aria-haspopup="true"
+      data-mage-init='{"dropdown":{"autoclose":"false","activeClass":"dropdown-active"}}'>
+    <span class="label"><?= $escaper->escapeHtml(__('Vehicle')); ?></span>
+</span>

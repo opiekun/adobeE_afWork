@@ -1,0 +1,13 @@
+diff --git a/vendor/amasty/shopby/view/frontend/web/js/amShopbyAjax.js b/vendor/amasty/shopby/view/frontend/web/js/amShopbyAjax.js
+index fc4af3e..5f8a9db 100644
+--- a/vendor/amasty/shopby/view/frontend/web/js/amShopbyAjax.js
++++ b/vendor/amasty/shopby/view/frontend/web/js/amShopbyAjax.js
+@@ -507,7 +507,7 @@ define([
+                         delete paramData[paramName];
+                     }
+ 
+-                    if (self.options.isMemorizerAllowed) {
++                    if (self.options.isMemorizerAllowed !== '0') {
+                         self.memorizeData.push({name: paramName, value: paramValue});
+                     }
+ 

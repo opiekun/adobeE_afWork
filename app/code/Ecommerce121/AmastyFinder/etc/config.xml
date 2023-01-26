@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <amfinder>
+            <export>
+                <enabled>0</enabled>
+                <cron_schedule>* 1 * * *</cron_schedule>
+                <finder_id>10</finder_id>
+                <file_name>export/part_finder.csv</file_name>
+            </export>
+        </amfinder>
+    </default>
+</config>

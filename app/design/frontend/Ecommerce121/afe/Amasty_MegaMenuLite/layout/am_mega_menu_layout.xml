@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+
+<layout xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceBlock name="head.additional">
+            <referenceBlock name="header-wrapper">
+                <referenceBlock name="logo" remove="true"/>
+                <referenceBlock name="header.navigation.icon" remove="true"/>
+                <block class="Amasty\MegaMenuLite\Block\Container"
+                       name="amasty.menu.toggle"
+                       before="-"
+                       cacheable="false"
+                       template="Amasty_MegaMenuLite::components/toggle.phtml">
+                    <arguments>
+                        <argument name="view_model" xsi:type="object">
+                            Amasty\MegaMenuLite\ViewModel\Store\Menu
+                        </argument>
+                    </arguments>
+                </block>
+                <block class="Magento\Theme\Block\Html\Header\Logo"
+                       name="ammenu.logo"
+                       after="amasty.menu.toggle"
+                       template="Amasty_MegaMenuLite::components/logo.phtml">
+                    <arguments>
+                        <argument name="view_model" xsi:type="object">
+                            Amasty\MegaMenuLite\ViewModel\Header\Logo
+                        </argument>
+                    </arguments>
+                </block>
+            </referenceBlock>
+        </referenceBlock>
+        <move element="top.search" destination="header.holder" before="-" />
+        <move element="ammenu.logo" destination="header.panel" before="-" />
+    </body>
+</layout>

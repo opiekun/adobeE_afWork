@@ -1,0 +1,21 @@
+{
+  "name": "ecommerce121/module-amasty-shipping-table-rates",
+  "version": "1.0.0",
+  "description": "N/A",
+  "type": "magento2-module",
+  "require": {
+    "magento/framework": "*",
+    "amasty/shippingtablerates": "1.9.*"
+  },
+  "license": [
+    "Proprietary"
+  ],
+  "autoload": {
+    "files": [
+      "registration.php"
+    ],
+    "psr-4": {
+      "Ecommerce121\\AmastyShippingTableRules\\": ""
+    }
+  }
+}

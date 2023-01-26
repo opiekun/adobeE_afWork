@@ -1,0 +1,59 @@
+// Vars
+
+//
+//  Common
+//  _____________________________________________
+
+& when (@media-common = true) {
+    .catalog-product-view {
+        .files-links {
+            ul {
+                list-style: none;
+                .text {
+                    .lib-font-size(24);
+                    color: #000;
+                    display: inline-block;
+                    font-family: @font-family__base;
+                    font-style: normal;
+                    font-weight: @font-weight__bold;
+                    line-height: 1;
+                    margin-left: 10px;
+                    vertical-align: middle;
+                }
+                .img {
+                    display: inline-block;
+                    text-align: center;
+                    vertical-align: middle;
+                    width: 72px;
+                }
+            }
+        }
+    }
+}
+//
+//  Tablet and Mobile
+//  _____________________________________________
+
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__l) {
+    .catalog-product-view {
+        .page-main {
+            .column.main {
+                .product.info.detailed {
+                    .product.data.items {
+                        > .data.item.content {
+                            .pagebuilder-column {
+                                .files-links {
+                                    text-align: center;
+                                    > ul {
+                                        display: inline-block;
+                                        padding-left: 6px;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

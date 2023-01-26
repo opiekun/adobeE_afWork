@@ -1,0 +1,24 @@
+{
+  "name": "ecommerce121/module-sales-partial-shipments",
+  "version": "1.0.0",
+  "description": "N/A",
+  "type": "magento2-module",
+  "require": {
+    "magento/framework": "*",
+    "magento/module-admin-analytics": "100.4.*",
+    "magento/module-sales": "103.0.*",
+    "magento/module-sales-inventory": "100.4.*",
+    "magento/module-shipping": "100.4.*"
+  },
+  "license": [
+    "Proprietary"
+  ],
+  "autoload": {
+    "files": [
+      "registration.php"
+    ],
+    "psr-4": {
+      "Ecommerce121\\SalesPartialShipments\\": ""
+    }
+  }
+}

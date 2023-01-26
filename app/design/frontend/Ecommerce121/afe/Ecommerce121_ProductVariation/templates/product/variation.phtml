@@ -1,0 +1,63 @@
+<?php
+/**
+ * @var Ecommerce121\ProductVariation\Block\Product\View\Type\SimpleVariation $block
+ * @var Ecommerce121\ProductVariation\ViewModel\Product\View\VariationRenderStrategy $renderStrategy
+ */
+
+$product = $block->getProduct();
+if (!$block->isProductVariation($product)) {
+    return;
+}
+?>
+<?php
+$renderStrategy = $block->getRenderStrategy();
+$variations = $block->getProductsVariations($product);
+$variations[] = $product;
+usort($variations, function($a, $b) {
+    // Ordering by variant_order and by id so that ordering is consistent even when order is not filled
+    return [$a->getData('variant_order'), $a->getId()] <=> [$b->getData('variant_order'), $b->getId()];
+});
+
+
+?>
+<?php if ($renderStrategy->renderSwatches($variations)): ?>
+    <label class="product-variation-label"
+           title="<?= $block->escapeHtml($product->getVariantOption()); ?>">
+        <?= $block->escapeHtml(__('Option:')) ?>
+        <span><?= $block->escapeHtml($product->getVariantOption()) ?></span>
+    </label>
+    <div class="product-variation-list">
+        <?php
+        foreach ($variations as $variant): ?>
+            <?php $variationImage = $variant->getVariant() ? 'variant' : 'product_thumbnail_image' ?>
+            <div class="product-variation-item">
+                <a href="<?= $block->escapeUrl($block->getProductUrl($variant)); ?>"
+                   class="product photo product-item-photo <?php if ($variant->getId() === $product->getId()) {echo 'selected';} ?>"
+                   title="<?= $block->escapeHtml($variant->getVariantOption()) ?>">
+                    <?= $block->getImage($variant, $variationImage)->toHtml() ?>
+                </a>
+                <?= /* @noEscape */ $block->getProductPrice($variant) ?>
+            </div>
+        <?php endforeach; ?>
+    </div>
+<?php else: ?>
+    <label for="ecommerce-options"><?= $block->escapeHtml(__('Select Option:')) ?></label>
+
+    <select name="ecommerce_options" id="ecommerce-options">
+        <option value=""></option>
+        <?php foreach ($variations as $variation): ?>
+            <option value="<?= $block->escapeHtml($variation->getId()) ?>"
+                    data-url="<?= $block->escapeUrl($block->getProductUrl($variation)); ?>">
+                <?= $block->escapeHtml($variation->getVariantOption() ?? $variation->getName()) ?>
+            </option>
+        <?php endforeach; ?>
+    </select>
+<?php endif; ?>
+
+<script type="text/x-magento-init">
+{
+    ".product-variation-container": {
+       "product_variation": {}
+    }
+}
+</script>

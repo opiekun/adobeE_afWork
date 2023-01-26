@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:Module/etc/module.xsd">
+    <module name="Ecommerce121_ExtendedBasket">
+        <sequence>
+            <module name="Amasty_Stockstatus"/>
+            <module name="Bss_AjaxCart"/>
+            <module name="Ecommerce121_Basket"/>
+        </sequence>
+    </module>
+</config>

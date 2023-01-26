@@ -1,0 +1,58 @@
+<?php
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+// phpcs:disable Magento2.Templates.ThisInTemplate.FoundThis
+
+/**
+ * Product view template
+ *
+ * @var $block \Magento\Catalog\Block\Product\View\Description
+ */
+?>
+<?php
+$_helper = $this->helper(Magento\Catalog\Helper\Output::class);
+$_product = $block->getProduct();
+
+if (!$_product instanceof \Magento\Catalog\Model\Product) {
+    return;
+}
+
+$_call = $block->getAtCall();
+$_code = $block->getAtCode();
+$_className = $block->getCssClass();
+$_attributeType = $block->getAtType();
+$_attributeAddAttribute = $block->getAddAttribute();
+
+
+if ($_attributeType && $_attributeType == 'text') {
+    $_attributeValue = ($_helper->productAttribute($_product, $_product->$_call(), $_code))
+        ? $_product->getAttributeText($_code)
+        : '';
+} else {
+    $_attributeValue = $_helper->productAttribute($_product, $_product->$_call(), $_code);
+}
+if (!$_attributeValue) {
+    $_attributeValue = $_product->getData($_code);
+}
+
+$_attributeValueFull = "";
+switch ($_code) {
+    case "afe_perf_air_flow_increases":
+        $_attributeValueFull = "+" . $_attributeValue . "%";
+        break;
+    case "afe_perf_hp_gain":
+        $_attributeValueFull = "+" . $_attributeValue;
+        break;        
+    case "afe_perf_tq_gain":
+        $_attributeValueFull = "+" . $_attributeValue;
+        break;        
+    default: 
+        break;
+}
+
+?>
+
+<?php if ($_attributeValue) :?><?= /* @noEscape */ $_attributeValueFull ?><?php endif; ?>

@@ -1,0 +1,52 @@
+<?php
+/**
+ * @var Magento\Framework\Escaper $escaper
+ * @var Ecommerce121\PartFinder\Block\PartFinder $block
+ */
+
+if (!$block->displayOnCurrentCategory()) {
+    return;
+}
+?>
+<ul class="ecommerce121-partfinder">
+    <li class="ecommerce121-am-item">
+        <select name="ecommerce121_part_finder_first_level_category"
+                id="ecommerce121_part_finder_first_level_category"
+                data-mage-init='{"Ecommerce121_PartFinder/js/ecommerce121-part-finder":
+                {"config": <?= $block->getJsonOptions(); ?>}}'>
+            <option value=""><?= $escaper->escapeHtml(__('Select a Vehicle Type')) ?></option>
+            <?php
+            $topCategories = $block->getTopCategories();
+            foreach ($topCategories as $topCategory) : ?>
+                <option value="<?= (int) $topCategory->getId() ?>"><?= $escaper->escapeHtml($topCategory->getName()) ?></option>
+            <?php endforeach; ?>
+        </select>
+    </li>
+    <li class="ecommerce121-am-item">
+        <select name="ecommerce121_part_finder_second_level_category"
+                disabled="disabled"
+                id="ecommerce121_part_finder_second_level_category">
+            <option value=""><?= $escaper->escapeHtml(__('Select a Vehicle Make')) ?></option>
+        </select>
+    </li>
+    <li class="ecommerce121-am-item">
+        <select name="ecommerce121_part_finder_third_level_category"
+                disabled="disabled"
+                id="ecommerce121_part_finder_third_level_category">
+            <option value=""><?= $escaper->escapeHtml(__('Select a Vehicle Model')) ?></option>
+        </select>
+    </li>
+    <li class="ecommerce121-am-item">
+        <select name="ecommerce121_part_finder_fourth_level_category"
+                disabled="disabled" id="ecommerce121_part_finder_fourth_level_category">
+            <option value=""><?= $escaper->escapeHtml(__('Select a Generation')) ?></option>
+        </select>
+    </li>
+    <li class="ecommerce121-am-item">
+        <button type="button"
+                name="btn_ecommerce121_part_finder"
+                id="btn_ecommerce121_part_finder"
+                class="button action primary"
+                title="Submit">Submit</button>
+    </li>
+</ul>

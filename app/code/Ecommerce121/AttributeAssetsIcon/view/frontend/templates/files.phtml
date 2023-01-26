@@ -1,0 +1,47 @@
+<?php
+/**
+ * @var $configFiles Ecommerce121\AttributeAssetsIcon\ViewModel\FilesConfiguration
+ * @var $block Magento\Catalog\Block\Product\View
+ * @var $escaper Magento\Framework\Escaper
+ */
+$configFiles = $block->getIcons();
+$product = $block->getProduct();
+$mediaUrl = $configFiles->getMediaUrlToIcons();
+$mediaUrlToFiles = $configFiles->getMediaUrlToFiles();
+?>
+<div class="files-links">
+    <ul>
+    <?php if (!empty($product->getAssetAirFlowChart())) : ?>
+        <li>
+            <a href="<?= $escaper->escapeUrl($mediaUrlToFiles.$product->getAssetAirFlowChart()) ?>" title="Download File" target="_blank">
+                <img class="icon" src="<?= $escaper->escapeUrl($mediaUrl.$configFiles->getConfiguration()->getIconFlowChart()) ?>">
+                <div class="text">Airflow Chart</div>
+            </a>
+        </li>
+    <?php endif; ?>
+    <?php if (!empty($product->getAssetInstructions())) : ?>
+        <li>
+            <a href="<?= $mediaUrlToFiles.$product->getAssetInstructions() ?>" title="Download File" target="_blank">
+                <img class="icon" src="<?= $mediaUrl.$configFiles->getConfiguration()->getIconInstructions() ?>">
+                <div class="text">Instructions</div>
+            </a>
+        </li>
+    <?php endif; ?>
+    <?php if (!empty($product->getAssetDocument())) : ?>
+        <li>
+            <a href="<?= $mediaUrlToFiles.$product->getAssetDocument() ?>" title="Download File" target="_blank">
+                <img class="icon" src="<?= $mediaUrl.$configFiles->getConfiguration()->getIconDocument() ?>">
+                <div class="text">Document</div>
+            </a>
+        </li>
+    <?php endif; ?>
+    <?php if (!empty($product->getAssetDynoChart())) : ?>
+        <li>
+            <a href="<?= $mediaUrlToFiles.$product->getAssetDynoChart() ?>" title="Download File" target="_blank">
+                <img class="icon" src="<?= $mediaUrl.$configFiles->getConfiguration()->getIconDynoChart() ?>">
+                <div class="text">Dyno Chart</div>
+            </a>
+        </li>
+    <?php endif; ?>
+    </ul>
+</div>

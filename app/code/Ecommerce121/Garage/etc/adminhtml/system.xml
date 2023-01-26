@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <section id="garage" showInDefault="1" showInStore="1" showInWebsite="1" translate="label" sortOrder="150">
+            <label>Garage</label>
+            <tab>ecommerce121_extensions</tab>
+            <resource>Ecommerce121_Garage::settings</resource>
+            <group id="general" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="10" translate="label">
+                <label>Settings</label>
+                <field id="amasty_parts_finder" translate="label" type="select" sortOrder="10" showInDefault="1" canRestore="1">
+                    <label>Amasty Parts Finder Used in Garage</label>
+                    <source_model>Ecommerce121\Garage\Model\Store\Config\Source\AmastyPartsFinder</source_model>
+                    <comment>The options come from Amasty > Product Parts Finder > Product Finders</comment>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

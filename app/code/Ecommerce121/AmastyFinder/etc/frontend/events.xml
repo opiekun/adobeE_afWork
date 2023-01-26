@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:Event/etc/events.xsd">
+    <event name="layout_generate_blocks_after">
+        <observer name="Ecommerce121_AmastyFinder::RemoveDefaultFinder"
+                  instance="Ecommerce121\AmastyFinder\Observer\RemoveDefaultFinder" />
+    </event>
+</config>

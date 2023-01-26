@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Cron:etc/crontab.xsd">
+    <group id="default">
+        <job name="ecommerce121_partfinder_backup_daily" instance="Ecommerce121\PartFinder\Cron\BackupDaily" method="execute">
+            <!-- Run every week day at 9,13 and 18 PST (converted to UTC for server time with https://dateful.com/time-zone-converter)-->
+            <schedule>0 1,16,20 * * 1-5</schedule>
+        </job>
+        <job name="ecommerce121_partfinder_backup_weekly" instance="Ecommerce121\PartFinder\Cron\BackupWeekly" method="execute">
+            <!-- Run every friday at night (23 PST converted to 6 AM UTC) -->
+            <schedule>0 6 * * 5</schedule>
+        </job>
+    </group>
+</config>

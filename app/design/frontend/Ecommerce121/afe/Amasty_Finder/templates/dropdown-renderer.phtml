@@ -1,0 +1,60 @@
+<?php
+/** @var Amasty\Finder\Block\DropdownRenderer $block */
+/** @var Magento\Framework\Escaper $escaper */
+
+use Amasty\Finder\Model\Source\DisplayType;
+
+$dropdown = $block->getDropdown();
+$dropdownId = $dropdown->getDropdownId();
+$dropdownValues = $block->getValues() ?: $block->getDropdownValues($dropdown);
+$dropdownBox = isset($dropdownValues[0]) ? $dropdownValues[0] : [];
+$displayType = $dropdown->getDisplayType();
+?>
+
+<?php if ($displayType == DisplayType::DROPDOWN) : ?>
+    <option value=""><?= $escaper->escapeHtml(__('Please Select ...')); ?></option>
+    <?php foreach ($dropdownValues as $value) : ?>
+        <option value="<?= $escaper->escapeHtml($value['value']); ?>"
+            <?php if ($value['selected']) : ?>
+                selected="selected"
+            <?php endif ?>>
+            <?= $escaper->escapeHtml($value['label']) ?>
+        </option>
+    <?php endforeach ?>
+<?php else : ?>
+    <div class="amfinder-close" data-amfinder-js="close">&times;</div>
+    <?php foreach ($dropdownValues as $key => $value) : ?>
+        <div class="amfinder-item <?= $displayType == DisplayType::LABEL ? '-label' : '' ?>"
+             data-amfinder-js="item">
+            <input type="radio"
+                   name="finder[<?= $escaper->escapeHtml((int)$dropdownId) ?>]"
+                   id="item-<?= $escaper->escapeHtml((int)$dropdownId) ?>-<?= $escaper->escapeHtml($key) ?>"
+                   class="am-input-hidden"
+                   value="<?= $escaper->escapeHtml($value['value']) ?>"
+                   data-item-label="<?= $escaper->escapeHtml($value['label']) ?>"
+                   data-amfinder-js="input-hidden"
+                   data-name-js="finder-<?= $escaper->escapeHtml((int)$dropdown->getFinderId()) ?>--<?= $escaper->escapeHtml((int)$dropdownId) ?>"
+                   <?= $value['selected'] ? 'checked' : ''?>>
+            <label for="item-<?= $escaper->escapeHtml((int)$dropdownId) ?>-<?= $escaper->escapeHtml($key) ?>" class="am-label"
+                   name="<?= $escaper->escapeHtml($value['label']) ?>">
+                <?php if ($displayType == DisplayType::IMAGE_LABEL || $displayType == DisplayType::IMAGE) : ?>
+                    <?php $img = isset($value['image']) ? $escaper->escapeHtml($value['image']) : ''; ?>
+                    <div class="amfinder-img <?= $img ? '' : '-no-img' ?>"
+                        <?= $img ? '' : 'title="' . $escaper->escapeHtml($value['label']) . '"'?>>
+                        <?php if ($img) : ?>
+                            <img src="<?= $escaper->escapeUrl($value['image']) ?>"
+                                 alt="<?= $escaper->escapeHtml($value['label']) ?>"
+                                 title="<?= $escaper->escapeHtml($value['label']) ?>"
+                                 class="amfinder-pic">
+                        <?php endif ?>
+                    </div>
+                <?php endif ?>
+                <?php if ($displayType == DisplayType::LABEL || $displayType == DisplayType::IMAGE_LABEL) : ?>
+                    <p class="amfinder-label">
+                        <?= $escaper->escapeHtml($value['label']) ?>
+                    </p>
+                <?php endif ?>
+            </label>
+        </div>
+    <?php endforeach; ?>
+<?php endif ?>

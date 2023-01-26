@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceBlock name="checkout.cart.crosssell">
+            <action method="setTemplate" ifconfig="weltpixel_owl_carousel_config/crosssell_products/status">
+                <argument name='template' xsi:type='string'>Ecommerce121_RelatedProducts::product/list/items.phtml</argument>
+            </action>
+        </referenceBlock>
+        <referenceContainer name="checkout.cart.items">
+            <block class="Magento\Framework\View\Element\Template"
+                   name="catalog.product.related.add.to.cart"
+                   after="checkout.cart.crosssell"
+                   template="Ecommerce121_RelatedProducts::product/list/add_to_cart.phtml"/>
+        </referenceContainer>
+    </body>
+</page>

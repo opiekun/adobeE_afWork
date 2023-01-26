@@ -1,0 +1,16 @@
+<?php
+/**
+ * @var Ecommerce121\ProductPage\Block\Product\View\BrandImage $block
+ * @var Magento\Framework\Escaper $escaper
+ */
+
+$url = $block->getBrandImageUrl();
+
+
+if (!$url) {
+    return;
+}
+?>
+<div class="brand-image">
+    <img src="<?= $escaper->escapeUrl($url) ?>" alt="brand"/>
+</div>

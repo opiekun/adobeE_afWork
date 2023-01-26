@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <type name="Bss\AjaxCart\Helper\Data">
+        <plugin name="Ecommerce121_ExtendedBasket::manage-add-to-cart-ajax"
+                type="Ecommerce121\ExtendedBasket\Plugin\ManageAddToCartAjax"/>
+    </type>
+    <type name="Amasty\Stockstatus\Model\Stockstatus\Information">
+        <plugin name="Ecommerce121_ExtendedBasket::nullable-status-message"
+                type="Ecommerce121\ExtendedBasket\Plugin\NullableStatusMessage"/>
+    </type>
+    <preference type="Ecommerce121\ExtendedBasket\Block\Product\View\Type\Basket"
+                for="Ecommerce121\Basket\Block\Product\View\Type\Basket" />
+    <preference type="Ecommerce121\ExtendedBasket\Block\Product\Renderer\Listing\Configurable"
+                for="Magento\Swatches\Block\Product\Renderer\Listing\Configurable" />
+</config>

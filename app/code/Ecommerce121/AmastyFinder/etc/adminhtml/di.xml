@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <preference for="Amasty\Finder\Block\Adminhtml\Finder\Edit\Tab\Main"
+                type="Ecommerce121\AmastyFinder\Preference\Block\Adminhtml\Finder\Edit\Tab\MainPreference"/>
+    <preference for="Amasty\Finder\Block\Adminhtml\Finder\Edit\Tab\Dropdowns"
+                type="Ecommerce121\AmastyFinder\Preference\Block\Adminhtml\Finder\Edit\Tab\DropdownsPreference"/>
+    <preference for="Amasty\Finder\Controller\Adminhtml\Finder\Save"
+                type="Ecommerce121\AmastyFinder\Preference\Controller\Adminhtml\Finder\SavePreference"/>
+    <preference for="Amasty\Finder\Block\Adminhtml\Finder\Edit"
+                type="Ecommerce121\AmastyFinder\Preference\Block\Adminhtml\Finder\Edit"/>
+    <preference for="Amasty\Finder\Block\Adminhtml\Finder\Edit\Tab\Products"
+                type="Ecommerce121\AmastyFinder\Preference\Block\Adminhtml\Finder\Edit\Tab\Products"/>
+</config>

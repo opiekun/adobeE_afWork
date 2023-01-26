@@ -1,0 +1,70 @@
+<?php
+/**
+ * @var Magento\Framework\View\Element\Template $block
+ * @var Magento\Framework\Escaper $escaper
+ * @var Ecommerce121\Garage\ViewModel\Customer\Account\Garage $garage
+ * @var Ecommerce121\Garage\ViewModel\Customer\Account\FormData $formData
+ */
+$garage = $block->getGarage();
+$formData = $block->getFormData();
+$vehicles = $garage->getVehicles();
+$vehicleNumber = 0;
+?>
+
+<?= $block->getChildHtml('ecommerce_garage_actions') ?>
+
+<?php foreach ($vehicles as $vehicle): ?>
+    <?php $vehicleNumber++; ?>
+    <?php
+    if($garage->getFormattedValues($vehicle) != "[]"): ?>
+<script type="text/x-magento-init">
+{
+    "*": {
+        "Magento_Ui/js/core/app": {
+            "components": {
+                "ecommerce121-garage-vehicle-<?= (int) $vehicle->getId() ?>": {
+                    "component": "Ecommerce121_Garage/js/vehicle",
+                    "template": "Ecommerce121_Garage/vehicle_static",
+                    "vehicleId": "<?= (int) $vehicle->getId() ?>",
+                    "selectedValues": <?= $garage->getFormattedValues($vehicle) ?>,
+                    "title": "<?= $escaper->escapeHtml(__('VEHICLE #%1', $vehicleNumber))?>",
+                    "dropdowns": <?= $formData->getDropdowns(true) ?>,
+                    "values": <?= $garage->getSelectedValues($vehicle); ?>,
+                    "deleteUrl": "<?= $block->getUrl('garage/manage/delete') ?>"
+                }
+            }
+        }
+    }
+}
+</script>
+<div class="ecommerce121-garage-vehicle-<?= (int) $vehicle->getId() ?>"
+     data-bind="scope: 'ecommerce121-garage-vehicle-<?= (int) $vehicle->getId() ?>'">
+    <!-- ko template: getTemplate() --><!-- /ko -->
+</div>
+<?php endif;?>
+<?php endforeach;?>
+
+<script type="text/x-magento-init">
+{
+    "*": {
+        "Magento_Ui/js/core/app": {
+            "components": {
+                "ecommerce121-garage-vehicle": {
+                    "component": "Ecommerce121_Garage/js/garage-vehicle",
+                    "template": "Ecommerce121_Garage/vehicle",
+                    "title": "<?= $escaper->escapeHtml(__('ADD')) ?>",
+                    "dropdowns": <?= $formData->getDropdowns(true) ?>,
+                    "url": "<?= $formData->getUrl() ?>",
+                    "description": "<?= $escaper->escapeHtml(__('[THEN PRESS SAVE GARAGE TO ADD MORE]')) ?>"
+                }
+            }
+        }
+    }
+}
+</script>
+<div class="ecommerce121-garage-vehicle"
+     data-bind="scope: 'ecommerce121-garage-vehicle'">
+    <!-- ko template: getTemplate() --><!-- /ko -->
+</div>
+
+<?= $block->getChildHtml('ecommerce_garage_actions') ?>

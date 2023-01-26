@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <type name="Ecommerce121\ProductListing\Model\Store\Config">
+        <arguments>
+            <argument name="data" xsi:type="array">
+                <item name="enabled" xsi:type="string">plp_menu/general/enabled</item>
+                <item name="product_category" xsi:type="string">plp_menu/general/product_category</item>
+                <item name="product_mode" xsi:type="string">plp_menu/general/product_mode</item>
+                <item name="generation_label" xsi:type="string">plp_menu/filters/generation_label</item>
+            </argument>
+        </arguments>
+    </type>
+    <type name="Magento\Catalog\Model\Layer\Category\CollectionFilter">
+        <plugin name="Ecommerce121_ProductListing::add-filters"
+                type="Ecommerce121\ProductListing\Plugin\Magento\Catalog\Model\Layer\Category\CollectionFilter\CategoryFilter" />
+    </type>
+    <type name="Magento\Catalog\Helper\Data">
+        <plugin name="Ecommerce121_ProductListing::add-breadcrumbs"
+                type="Ecommerce121\ProductListing\Plugin\Magento\Catalog\Helper\Data\AddBreadcrumbs" />
+    </type>
+    <type name="Amasty\Finder\Model\Finder\SearchCriteriaBuilder">
+        <plugin name="Ecommerce121_ProductListing::add-finder-sku-to-session"
+                type="Ecommerce121\ProductListing\Plugin\Amasty\Finder\Model\Finder\SearchCriteriaBuilderPlugin" />
+    </type>
+    <type name="Magento\Catalog\Block\Product\ProductList\Toolbar">
+        <plugin name="Ecommerce121_ProductListing::add-set-sort-order-to-toolbar"
+                type="Ecommerce121\ProductListing\Plugin\Magento\Catalog\Block\Product\ProductList\Toolbar" />
+    </type>
+    <preference for="Amasty\Shopby\Model\Search\SearchCriteriaBuilderProvider"
+                type="Ecommerce121\ProductListing\Plugin\Amasty\Shopby\Model\Search\SearchCriteriaBuilderProvider"/>
+</config>

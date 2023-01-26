@@ -1,0 +1,22 @@
+{
+    "name": "ecommerce121/variant-order",
+    "description": "n/a",
+    "type": "magento2-module",
+    "version": "1.0.0",
+    "license": [
+        "OSL-3.0",
+        "AFL-3.0"
+    ],
+    "require": {
+        "php": "^7.4.0",
+        "ecommerce121/product-variations": "^1.0"
+    },
+    "autoload": {
+        "files": [
+            "registration.php"
+        ],
+        "psr-4": {
+            "Ecommerce121\\VariantOrder\\": ""
+        }
+    }
+}

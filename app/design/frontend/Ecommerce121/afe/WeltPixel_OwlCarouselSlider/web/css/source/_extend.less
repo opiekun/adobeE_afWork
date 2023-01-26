@@ -1,0 +1,164 @@
+//
+//  Common
+//  _____________________________________________
+& when (@media-common = true) {
+    .custom-slider {
+        .owl-carousel {
+            .owl-stage-outer {
+                padding: 0;
+            }
+            .banner-item {
+                .content_slider {
+                    display: flex;
+                    flex-direction: column;
+                    left: auto;
+                    top: 50%;
+                    transform: translateY(-50%);
+                    width: 100%;
+
+                    .banner-description {
+                        .lib-font-size(30);
+                        .lib-line-height(36);
+                        box-sizing: border-box;
+                        color: @color-white;
+                        font-weight: @font-weight__heavy;
+                        padding: 24px;
+                        text-align: left;
+                        text-transform: uppercase;
+                        width: 302px;
+                    }
+
+                    .buttons {
+                        box-sizing: border-box;
+                        padding: 0 24px 24px;
+                        text-align: left;
+                        width: 302px;
+
+                        a.action.primary {
+                            .lib-font-size(18);
+                            .lib-line-height(50);
+                            background: @color-black;
+                            border-color: @color-black;
+                            color: @color-white;
+                            font-weight: @font-weight__extrabold;
+                            height: 50px;
+                            margin: 0;
+                            padding: 0;
+                            text-align: center;
+                            width: 200px;
+                            &:hover {
+                                background: @theme__color__third;
+                                border-color: @theme__color__third;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .clearfix {
+        *zoom: 1;
+        &:after {
+            content: '';
+            display: block;
+            clear: both;
+            height: 0;
+        }
+    }
+}
+
+//
+//  Mobile
+//  _____________________________________________
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__m) {
+    .custom-slider {
+        .owl-carousel {
+            .owl-item {
+                .banner-item {
+                    .content_slider {
+                        align-items: center;
+                        background: rgba(22, 22, 22, 0.8);
+                        left: 50%;
+                        margin: 0 auto;
+                        transform: translate(-50%, -50%);
+                        width: 302px;
+                    }
+                }
+            }
+        }
+    }
+}
+
+//
+//  Tablet
+//  _____________________________________________
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
+    .custom-slider {
+        .owl-carousel {
+            .banner-item {
+                .content_slider {
+                    align-items: flex-end;
+                    right: 3%;
+                    top: 13%;
+                    transform: none;
+                    width: auto;
+                    .banner-description {
+                        background: none;
+                    }
+                    .buttons {
+                        background: none;
+                    }
+                }
+            }
+        }
+    }
+}
+
+//
+//  Tablet and Mobile
+//  _____________________________________________
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__l) {
+    .custom-slider {
+        .owl-carousel {
+            .banner-item {
+                .banner-image {
+                    display: block;
+                    height: 413px;
+                    overflow: hidden;
+                    position: relative;
+                    width: 100%;
+
+                    img {
+                        height: 413px;
+                        left: 50%;
+                        max-width: none;
+                        position: absolute;
+                        top: 0;
+                        transform: translateX(-50%);
+                        width: auto;
+                    }
+                }
+            }
+        }
+    }
+}
+
+//
+//  Desktop
+//  _____________________________________________
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__l) {
+    .custom-slider {
+        .owl-carousel {
+            .owl-item {
+                .banner-item {
+                    .content_slider {
+                        right: 8%;
+                        top: 16%;
+                    }
+                }
+            }
+        }
+    }
+}
+

@@ -1,0 +1,32 @@
+<?php
+/**
+ * @var Magento\Framework\View\Element\Template $block
+ * @var Magento\Framework\Escaper $escaper
+ * @var Ecommerce121\Garage\ViewModel\Customer\Account\Garage $garage
+ * @var Ecommerce121\Garage\ViewModel\Customer\Account\FormData $formData
+ */
+$garage = $block->getGarage();
+$vehicles = $garage->getVehicles();
+?>
+
+<script type="text/x-magento-init">
+{
+    "*": {
+        "Magento_Ui/js/core/app": {
+            "components": {
+                "ecommerce121-garage-action": {
+                    "component": "Ecommerce121_Garage/js/garage-action",
+                    "template": "Ecommerce121_Garage/garage-action",
+                    "saveUrl": "<?= $block->getUrl('garage/manage/save') ?>",
+                    "backUrl": "<?= $garage->getBackUrl() ?>",
+                    "vehicleComponentNames": <?= $garage->getVehicleComponentNames($vehicles) ?>
+                }
+            }
+        }
+    }
+}
+</script>
+<div class="ecommerce121-garage-action"
+     data-bind="scope: 'ecommerce121-garage-action'">
+    <!-- ko template: getTemplate() --><!-- /ko -->
+</div>

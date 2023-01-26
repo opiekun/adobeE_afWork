@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Cron:etc/crontab.xsd">
+    <group id="amasty_base">
+        <job name="ecommerce121_amastyfinder_export_parts_finder"
+             instance="Ecommerce121\AmastyFinder\Cron\ExportPartsFinder" method="execute">
+            <config_path>amfinder/export/cron_schedule</config_path>
+        </job>
+    </group>
+</config>

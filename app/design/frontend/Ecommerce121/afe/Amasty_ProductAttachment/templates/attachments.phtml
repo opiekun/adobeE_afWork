@@ -1,0 +1,39 @@
+<?php
+/**
+ * @author Amasty Team
+ * @copyright Copyright (c) 2021 Amasty (https://www.amasty.com)
+ * @package Amasty_ProductAttachment
+ */
+?>
+<?php
+/** @var \Amasty\ProductAttachment\Block\Widgets\AttachmentsList $block */
+?>
+<?php if ($files = $block->getAttachments()): ?>
+
+                <?php foreach ($files as $file): ?>
+                    <?php
+                        $_label = $file->getLabel();
+                        $_src = "";
+                        $_caption = "";
+                        if (strpos(strtolower($_label), 'air') !== false) {
+                            $_src = $this->getViewFileUrl('images/pdp-files-airflowchart_1_1.png');
+                        } elseif (strpos(strtolower($_label), 'dino') !== false) {
+                            $_src = $this->getViewFileUrl('images/pdp-files-dynochart_1_1.png');
+                        } elseif (strpos(strtolower($_label), 'dyno') !== false) {
+                            $_src = $this->getViewFileUrl('images/pdp-files-dynochart_1_1.png');
+                        } elseif (strpos(strtolower($_label), 'instr') !== false) {
+                            $_src = $this->getViewFileUrl('images/pdp-files-instructions_1_1.png');
+                        } else {
+                            $_src = $file->getIconUrl();
+                        }
+                    ?>
+                    <figure data-content-type="image" data-appearance="full-width" data-element="main">
+                        <a href="<?= $block->escapeUrl($file->getFrontendUrl()) ?>" target="_blank" data-link-type="default" title="" data-element="link">
+                            <img class="pagebuilder-mobile-hidden" src="<?php echo $_src; ?>" alt="<?= $_label ?>" title="<?= $_label ?>" data-element="desktop_image" />
+                            <img class="pagebuilder-mobile-only" src="<?php echo $_src; ?>" alt="<?= $_label ?>" title="<?= $_label ?>" data-element="mobile_image" />
+                        </a>
+                        <figcaption data-element="caption"><?= $_label; ?></figcaption>
+                    </figure>
+
+                <?php endforeach; ?>
+<?php endif; ?>

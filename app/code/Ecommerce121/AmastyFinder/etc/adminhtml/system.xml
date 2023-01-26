@@ -1,0 +1,46 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <section id="amfinder" translate="label" sortOrder="161809" showInDefault="1" showInWebsite="1"
+                 showInStore="1">
+            <resource>Ecommerce121_Finder::finder</resource>
+            <group id="export" translate="label" type="select" sortOrder="50" showInDefault="1" showInWebsite="0"
+                   showInStore="0">
+                <label>Export</label>
+                <field id="enabled" translate="label" type="select" sortOrder="100" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>Enable</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="cron_schedule" translate="label comment" type="text" sortOrder="120" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>Cron Schedule</label>
+                    <depends>
+                        <field id="export_enable">1</field>
+                    </depends>
+                    <comment>Specify cron schedule.</comment>
+                </field>
+                <field id="finder_id" translate="label comment" type="select" sortOrder="130" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>Finder to Export</label>
+                    <source_model>Amasty\Finder\Model\Source\CompatibleFinder</source_model>
+                    <depends>
+                        <field id="export_enable">1</field>
+                    </depends>
+                    <comment>Specify which Product Finder will be exported.</comment>
+                </field>
+
+                <field id="file_name" translate="label comment" type="text" sortOrder="140" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>Path and Filename</label>
+                    <depends>
+                        <field id="export_enable">1</field>
+                    </depends>
+                    <comment>Specify the name of the file: export/finder.csv. The file will be created on pub/media folder and can be accessed via public link, ex: domain.com/media/export/finder.csv</comment>
+                </field>
+
+            </group>
+        </section>
+    </system>
+</config>

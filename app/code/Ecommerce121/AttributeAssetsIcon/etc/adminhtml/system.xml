@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <section id="ecommerce121_attribute_assets_icon" showInDefault="1" showInStore="1" showInWebsite="1" translate="label" sortOrder="150">
+            <label>Assets Icon</label>
+            <tab>ecommerce121_extensions</tab>
+            <resource>Ecommerce121_AttributeAssetsIcon::settings</resource>
+            <group id="general" showInDefault="1" showInStore="1" showInWebsite="10" sortOrder="10" translate="label">
+                <label>Settings</label>
+                <field id="icon_air_flow_chart" translate="label" type="image" sortOrder="1" showInDefault="1" showInWebsite="1" >
+                    <label>Icon Air Flow Chart</label>
+                    <backend_model>Magento\Config\Model\Config\Backend\Image</backend_model>
+                    <base_url type="media" scope_info="1">assets_icon</base_url>
+                    <upload_dir config="system" scope_info="1">assets_icon</upload_dir>
+                </field>
+                <field id="icon_instructions" translate="label" type="image" sortOrder="20" showInDefault="1" showInWebsite="1" >
+                    <label>Icon Instructions</label>
+                    <backend_model>Magento\Config\Model\Config\Backend\Image</backend_model>
+                    <base_url type="media" scope_info="1">assets_icon</base_url>
+                    <upload_dir config="system" scope_info="1">assets_icon</upload_dir>
+                </field>
+                <field id="icon_document" translate="label" type="image" sortOrder="30" showInDefault="1" showInWebsite="1" >
+                    <label>Icon Document</label>
+                    <backend_model>Magento\Config\Model\Config\Backend\Image</backend_model>
+                    <base_url type="media" scope_info="1">assets_icon</base_url>
+                    <upload_dir config="system" scope_info="1">assets_icon</upload_dir>
+                </field>
+                <field id="icon_dyno_chart" translate="label" type="image" sortOrder="40" showInDefault="1" showInWebsite="1" >
+                    <label>Icon Dyno Chart</label>
+                    <backend_model>Magento\Config\Model\Config\Backend\Image</backend_model>
+                    <base_url type="media" scope_info="1">assets_icon</base_url>
+                    <upload_dir config="system" scope_info="1">assets_icon</upload_dir>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

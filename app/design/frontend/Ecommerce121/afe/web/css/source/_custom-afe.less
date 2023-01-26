@@ -1,0 +1,43 @@
+//
+//  Common
+//  ----------------------------------------------
+
+& when (@media-common = true) {
+    select {
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        background-color: @color-white;
+
+        &:focus{
+            box-shadow: none;
+        }
+    }
+    html {
+        #zonos {
+            z-index: 9999 !important;
+        }
+        .mfp-wrap {
+            z-index: 99999;
+        }
+        .mfp-bg {
+            z-index: 99998;
+        }
+    }
+}
+
+//
+//  Mobile
+//  --------------------------------------------
+
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__m) {
+
+}
+
+
+//
+//  Desktop
+//  --------------------------------------------
+
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
+
+}

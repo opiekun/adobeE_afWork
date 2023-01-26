@@ -1,0 +1,60 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceContainer name="header.container">
+            <block class="Magento\Cms\Block\Block" name="header_alert_block" before="-">
+                <arguments>
+                    <argument name="block_id" xsi:type="string">header_alert_block</argument>
+                </arguments>
+            </block>
+        </referenceContainer>
+
+        <referenceBlock name="top.links">
+            <block class="Magento\Framework\View\Element\Html\Link" name="contact-link" after="-">
+                <arguments>
+                    <argument name="title" xsi:type="string" translate="true">Contact</argument>
+                    <argument name="label" xsi:type="string" translate="true">Contact</argument>
+                    <argument name="path" xsi:type="string" translate="true">contact-us</argument>
+                    <argument name="class" xsi:type="string" translate="true">link contact</argument>
+                    <argument name="sortOrder" xsi:type="number">10</argument>
+                </arguments>
+            </block>
+        </referenceBlock>
+        <referenceContainer name="footer-container">
+            <block class="Magento\Cms\Block\Block" name="footer_newsletter_subscribe_block" before="footer">
+                <arguments>
+                    <argument name="block_id" xsi:type="string">footer_newsletter_subscribe_block</argument>
+                </arguments>
+            </block>
+        </referenceContainer>
+        <referenceContainer name="cms_footer_links_container">
+            <block class="Magento\Cms\Block\Block" name="footer_links_block">
+                <arguments>
+                    <argument name="block_id" xsi:type="string">footer_links_block</argument>
+                </arguments>
+            </block>
+        </referenceContainer>
+        <move element="logo" destination="header.panel" before="-" />
+        <move element="top.links" destination="header.holder" after="top.search"/>
+        <move element="amasty.menu.toggle" destination="header.holder" />
+        <move element="top.search" destination="header.holder" before="-" />
+
+        <move element="minicart" destination="header.holder" after="-" />
+        <move element="skip_to_content" destination="header.container" before="-" />
+
+        <referenceBlock name="invitation_link_top" remove="true" />
+        <referenceBlock name="my-account-link" remove="true" />
+        <referenceBlock name="register-link" remove="true" />
+        <referenceBlock name="catalog.compare.link" remove="true" />
+        <referenceBlock name="wish-list-link" remove="true" />
+        <referenceBlock name="advanced-search-link" remove="true" />
+        <referenceBlock name="footer_links" remove="true" />
+        <referenceBlock name="newsletter_head_components" remove="true" />
+        <referenceBlock name="report.bugs" remove="true"/>
+        <referenceBlock name="form.subscribe"  remove="true" />
+        <referenceBlock name="catalogsearch.leftnav" remove="true" />
+
+        <referenceBlock name="sale.reorder.sidebar" remove="true"/>
+        <move element="copyright" destination="before.body.end"/>
+    </body>
+</page>

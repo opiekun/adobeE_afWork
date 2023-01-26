@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+<page layout="1column" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <container name="product.info.media.add" htmlTag="div" htmlClass="product-info-media-add">
+            <block class="Magento\Framework\View\Element\Template" name="product.perf"
+                   template="Magento_Catalog::product/view/attributes_perf.phtml">
+                <block class="Magento\Catalog\Block\Product\View\Description" name="product.stats1" as="stats1"
+                       template="Magento_Catalog::product/view/attribute_perf.phtml">
+                    <arguments>
+                        <argument name="at_call" xsi:type="string">getAfe_perf_air_flow_increase</argument>
+                        <argument name="at_code" xsi:type="string">afe_perf_air_flow_increases</argument>
+                        <argument name="css_class" xsi:type="string">afe_perf_air_flow_increase</argument>
+                        <argument name="at_label" xsi:type="string">FLOW INCREASE</argument>
+                        <argument name="sort_order" xsi:type="string">10</argument>
+                    </arguments>
+                </block>
+                <block class="Magento\Catalog\Block\Product\View\Description" name="product.stats2" as="stats2"
+                       template="Magento_Catalog::product/view/attribute_perf.phtml">
+                    <arguments>
+                        <argument name="at_call" xsi:type="string">getAfe_perf_hp_gain</argument>
+                        <argument name="at_code" xsi:type="string">afe_perf_hp_gain</argument>
+                        <argument name="css_class" xsi:type="string">afe_perf_hp_gain</argument>
+                        <argument name="at_label" xsi:type="string">HORSE POWER</argument>
+                        <argument name="sort_order" xsi:type="string">20</argument>
+                    </arguments>
+                </block>
+                <block class="Magento\Catalog\Block\Product\View\Description" name="product.stats3" as="stats3"
+                       template="Magento_Catalog::product/view/attribute_perf.phtml">
+                    <arguments>
+                        <argument name="at_call" xsi:type="string">getAfe_perf_tq_gain</argument>
+                        <argument name="at_code" xsi:type="string">afe_perf_tq_gain</argument>
+                        <argument name="css_class" xsi:type="string">afe_perf_tq_gain</argument>
+                        <argument name="at_label" xsi:type="string">TORQUE MAX GAINS</argument>
+                        <argument name="sort_order" xsi:type="string">30</argument>
+                    </arguments>
+                </block> 
+            </block>
+        </container> 
+        <move element="product.info.media.add" destination="product.info.media" after="-"/>
+        <referenceContainer name="product.info.main">
+            <block name="custom.status.text"
+                   class="Magento\Catalog\Block\Product\View"
+                   template="Magento_Catalog::product/view/custom_status_text.phtml"
+                   before="ecommerce121.product.variation"/>
+        </referenceContainer>
+    </body>
+</page>

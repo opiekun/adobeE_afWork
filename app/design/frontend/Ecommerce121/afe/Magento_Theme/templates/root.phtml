@@ -1,0 +1,35 @@
+<?php
+
+use Ecommerce121\SearchSpring\Model\Store\Config;
+use Magento\Framework\App\ObjectManager;
+
+/**
+ * @var $searchSpring Config
+ */
+$objectManager = ObjectManager::getInstance();
+$searchSpring = $objectManager->get(Config::class);
+
+$siteId = $searchSpring->getSiteId();
+$isSearchSpringAllowed = $searchSpring->isEnabled();
+
+?>
+<!doctype html>
+<html <?= /* @noEscape */ $htmlAttributes ?>>
+<head <?= /* @noEscape */ $headAttributes ?>>
+    <?= /* @noEscape */ $requireJs ?>
+    <?= /* @noEscape */ $headContent ?>
+    <?= /* @noEscape */ $headAdditional ?>
+
+    <?php if ($isSearchSpringAllowed) :?>
+        <script src="https://snapui.searchspring.io/<?= $siteId; ?>/bundle.js"
+                id="searchspring-context"></script>
+    <?php endif; ?>
+
+</head>
+<body data-container="body"
+      data-mage-init='{"loaderAjax": {}, "loader": { "icon": "<?= /* @noEscape */ $loaderIcon ?>"}}'
+    <?= /* @noEscape */ $bodyAttributes ?>>
+    <?= /* @noEscape */ $layoutContent ?>
+</body>
+</html>
+

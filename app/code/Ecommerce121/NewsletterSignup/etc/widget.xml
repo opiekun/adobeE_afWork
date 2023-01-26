@@ -1,0 +1,12 @@
+<widgets xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Widget:etc/widget.xsd">
+    <widget class="Ecommerce121\NewsletterSignup\Block\Widget\Form" id="newsletter_signup_form">
+        <label>Afepower Newsletter Signup Form</label>
+        <description>Newsletter Signup Form Widget</description>
+        <parameters>
+            <parameter name="title" xsi:type="text" required="true" visible="true" sort_order="10">
+                <label>Title</label>
+            </parameter>
+        </parameters>
+    </widget>
+</widgets>

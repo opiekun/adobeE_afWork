@@ -1,0 +1,6 @@
+sku;hp_gain;hp_rpm;tq_gain;tq_rpm;air_flow_increase;air_flow_rateafe;air_flow_rateoe;measured_flow_restriction;intake_type;housing_color;housing_material;intake_tube_color;intake_tube_material;filter_included;oiled_or_dry_media;filter_material;filter_color;filter_flange_diameter;replacement_filter;coupler_included;coupler_color;coupler_material;hardware_included;modifications_required;tuning_required;carb_status
+51-73120-B;13;2800;24;2800;20;540;450;7;Open;Black;Cross-linked Polyethylene;Black;Aluminum;Yes;Dry;Non-woven Synthetic;Gray;3;21-91115;Yes;Black;Silicone;Yes;No;No;Non-CA
+51-73120-L;13;2800;24;2800;20;540;450;7;Open;Black;Cross-linked Polyethylene;Blue;Aluminum;Yes;Dry;Non-woven Synthetic;Gray;3;21-91115;Yes;Black;Silicone;Yes;No;No;Non-CA
+54-73120-B;13;2800;24;2800;29;580;450;7;Open;Black;Cross-linked Polyethylene;Black;Aluminum;Yes;Oiled;Cotton Gauze;Blue;3;24-91115;Yes;Black;Silicone;Yes;No;No;Non-CA
+54-73120-L;13;2800;24;2800;29;580;450;7;Open;Black;Cross-linked Polyethylene;Blue;Aluminum;Yes;Oiled;Cotton Gauze;Blue;3;24-91115;Yes;Black;Silicone;Yes;No;No;Non-CA
+54-73120-H;13;2800;24;2800;29;580;450;7;Open;Black;Cross-linked Polyethylene;Brushed;Aluminum;Yes;Oiled;Cotton Gauze;Blue;3;24-91115;Yes;Black;Silicone;Yes;No;No;Non-CA

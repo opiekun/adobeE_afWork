@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceContainer name="header.panel">
+            <container name="header.holder" htmlTag="div" htmlClass="header holder" after="-">
+                <block class="Magento\Framework\View\Element\Template"
+                       name="search_by_vehicle_block"
+                       template="Ecommerce121_Garage::header/search_by_vehicle.phtml"
+                       after="top.links">
+                    <block class="Magento\Framework\View\Element\Template"
+                           template="Ecommerce121_Garage::customer/search/filter.phtml"
+                           name="garage.vehicle.filter">
+                        <arguments>
+                            <argument name="garage" xsi:type="object">Ecommerce121\Garage\ViewModel\Search\Garage</argument>
+                        </arguments>
+                    </block>
+                    <block class="Magento\Framework\View\Element\Template"
+                           name="ecommerce_vehicle.search"
+                           template="Ecommerce121_Garage::header/search/form.phtml">
+                        <arguments>
+                            <argument name="form_data" xsi:type="object">Ecommerce121\Garage\ViewModel\Customer\Account\FormData</argument>
+                        </arguments>
+                    </block>
+                    <block class="Ecommerce121\Garage\Block\Header\Finder" name="amasty.finder.dropdown"/>
+                </block>
+            </container>
+        </referenceContainer>
+        <referenceContainer name="form.additional.info.create">
+            <block class="Magento\Framework\View\Element\Template"
+                   name="ecommerce_garage"
+                   template="Ecommerce121_Garage::customer/account/create.phtml">
+                <arguments>
+                    <argument name="form_data" xsi:type="object">Ecommerce121\Garage\ViewModel\Customer\Account\FormData</argument>
+                </arguments>
+            </block>
+        </referenceContainer>
+    </body>
+</page>

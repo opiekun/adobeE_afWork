@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <plp_menu>
+            <filters>
+                <generation_label>Generation</generation_label>
+            </filters>
+        </plp_menu>
+    </default>
+</config>

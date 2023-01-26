@@ -1,0 +1,68 @@
+<?php
+
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+// phpcs:disable Magento2.Templates.ThisInTemplate.FoundThis
+
+/**
+ * Product view template
+ *
+ * @var $block \Magento\Catalog\Block\Product\View\Description
+ */
+?>
+<?php
+$_helper = $this->helper(Magento\Catalog\Helper\Output::class);
+$_product = $block->getProduct();
+
+if (!$_product instanceof \Magento\Catalog\Model\Product) {
+    return;
+}
+
+$_label = $block->getAtLabel();
+$_className = $block->getCssClass();
+$_attributeValue = $block->getData('spec_items');
+
+?>
+
+<?php if ($_attributeValue) : ?>
+    <div data-mage-init='{"collapsible":{"collapsible": true, "trigger": ".type", "header": ".type", "content": ".value" }}' class="product attribute <?= $block->escapeHtmlAttr($_className) ?>" id="info-<?= $block->escapeHtmlAttr($_className) ?>"">
+        <strong class=" type"><?= $block->escapeHtml($_label) ?></strong>
+        <div class="value">
+            <table>
+                <tbody>
+                    <?php foreach($_attributeValue as $_item):
+                        $_call = $_item['at_call'];
+                        $_code = $_item['at_code'];
+                        $_attributeLabel = $_item['at_label'];
+                        $_before = isset($_item['at_before'])?$_item['at_before']:'';
+                        $_after = isset($_item['at_after'])?' ' . $_item['at_after']:'';                        
+                        if ($_item['at_type'] && $_item['at_type'] == 'text') {
+                            $_itemValue = ($_helper->productAttribute($_product, $_product->$_call(), $_code))
+                                ? $_product->getAttributeText($_code)
+                                : '';
+                        } else {
+                            $_itemValue = $_helper->productAttribute($_product, $_product->$_call(), $_code);
+                            if ($_item['at_type'] && $_item['at_type'] == 'boolean') {
+                                $_itemValue = $_itemValue === '0'? __('No'):__('Yes');
+                            } 
+                        }
+
+                        if ($_attributeLabel && $_attributeLabel == 'default') {
+                            $_attributeLabel = $_product->getResource()->getAttribute($_code)->getStoreLabel();
+                        }                    
+                    ?>
+                        <?php if ($_itemValue && $_itemValue !== '' || $_itemValue == 'No' ): ?>
+                            <tr>
+                                <td><?= /* @noEscape */ $_attributeLabel?></td>
+                                <td><?= /* @noEscape */ $_before . $_itemValue . $_after?></td>
+                            </tr>
+                        <?php endif;?>
+                    <?php endforeach; ?>
+                </tbody>
+            </table>
+        </div>
+    </div>
+<?php endif; ?>

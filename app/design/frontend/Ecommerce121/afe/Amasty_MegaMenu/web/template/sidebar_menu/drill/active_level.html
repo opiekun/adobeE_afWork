@@ -1,0 +1,44 @@
+<!--
+    Amasty ammenu_drill_wrapper UiComponent
+-->
+
+<section data-bind="
+             visible: $data.activeElem(),
+             attr: {
+                class: 'ammenu-active-level'
+             }">
+
+    <!-- ko template: { name: $data.templates.navigation } --><!-- /ko -->
+
+    <!-- ko scope: 'index = ammenu_submenu_mobile' -->
+        <!-- ko template: { name: getTemplate(), data: $parent.activeElem() } --><!-- /ko -->
+    <!-- /ko -->
+
+    <ul class="ammenu-items -drill" data-bind="foreach: $data.activeElem().elems">
+        <li data-bind="attr: {
+                class: 'ammenu-item ' + $parent.actionAnimation()
+            }">
+            <!-- ko if: ($data.level() < 3) -->
+                <!-- ko template: {
+                    name: $parent.root_templates.link,
+                    data: {
+                        item: $data,
+                        toggle: $data.isSubmenuVisible(),
+                        additionalClasses: '-mobile',
+                        border: true,
+                        event: {
+                            click: $parent.toggleItem.bind($parent, $data)
+                        }
+                    }
+                } -->
+                <!-- /ko -->
+            <!-- /ko -->
+            <!-- ko ifnot: ($data.level() < 3) -->
+            <a data-bind="attr: {
+                    href: $data.url,
+                    class: 'ammenu-link -mobile'
+                }, text: $data.name"></a>
+            <!-- /ko -->
+        </li>
+    </ul>
+</section>

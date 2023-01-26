@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/**
+ * @author 121eCommerce
+ * @copyright Copyright (c) 2021 121eCommerce (https://www.121ecommerce.com/)
+ * @package Ecommerce121_Zonos
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="../../../../../lib/internal/Magento/Framework/ObjectManager/etc/config.xsd">
+    <type name="Magento\SalesRule\Model\Quote\Discount">
+        <plugin name="ecommerce121MasterCouponDiscountPlugin" disabled="true" />
+    </type>
+    <type name="Zonos\Checkout\Model\Discount\Discount">
+        <plugin name="ecommerce121DiscountPlugin" type="Ecommerce121\ZonosCheckout\Plugin\DiscountPlugin" sortOrder="0" />
+    </type>
+    <preference for="Zonos\Checkout\Observer\Shipping" type="Ecommerce121\ZonosCheckout\Observer\Shipping"/>
+</config>

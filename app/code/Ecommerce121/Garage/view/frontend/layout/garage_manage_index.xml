@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <update handle="customer_account"/>
+    <body>
+        <referenceBlock name="breadcrumbs" remove="true" />
+        <referenceBlock name="page.main.title">
+            <action method="setPageTitle">
+                <argument translate="true" name="title" xsi:type="string">My Garage</argument>
+            </action>
+        </referenceBlock>
+        <referenceContainer name="content">
+            <block class="Magento\Framework\View\Element\Template"
+                   name="ecommerce_garage"
+                   template="Ecommerce121_Garage::customer/account/garage.phtml" cacheable="false">
+                <arguments>
+                    <argument name="form_data" xsi:type="object">Ecommerce121\Garage\ViewModel\Customer\Account\FormData</argument>
+                    <argument name="garage" xsi:type="object">Ecommerce121\Garage\ViewModel\Customer\Account\Garage</argument>
+                </arguments>
+                <block class="Magento\Framework\View\Element\Template"
+                       name="ecommerce_garage_actions"
+                       template="Ecommerce121_Garage::customer/account/garage/actions.phtml">
+                    <arguments>
+                        <argument name="garage" xsi:type="object">Ecommerce121\Garage\ViewModel\Customer\Account\Garage</argument>
+                    </arguments>
+                </block>
+            </block>
+        </referenceContainer>
+    </body>
+</page>

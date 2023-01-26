@@ -1,0 +1,51 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <type name="Ecommerce121\Garage\Model\Store\Config">
+        <arguments>
+            <argument name="data" xsi:type="array">
+                <item name="default_finder_id" xsi:type="string">garage/general/amasty_parts_finder</item>
+            </argument>
+        </arguments>
+    </type>
+    <preference for="Ecommerce121\Garage\Api\VehicleRepositoryInterface"
+                type="Ecommerce121\Garage\Model\VehicleRepository" />
+    <preference for="Ecommerce121\Garage\Api\Data\VehicleInterface"
+                type="Ecommerce121\Garage\Model\Vehicle" />
+    <preference for="Amasty\Finder\Model\ResourceModel\Value"
+                type="Ecommerce121\Garage\Plugin\ReindexAfterSaveValue" />
+    <type name="Magento\Framework\View\Layout">
+        <plugin name="Ecommerce121_Garage::personalize-customer-id"
+                type="Ecommerce121\Garage\Plugin\PersonalizeCustomerId"/>
+    </type>
+    <type name="Amasty\Finder\Model\Finder">
+        <plugin name="Ecommerce121_Garage::apply-amasty-filter-for-hidden-items"
+                type="Ecommerce121\Garage\Plugin\ApplyAmastyFilterForHiddenItems"/>
+    </type>
+
+    <virtualType name="Ecommerce\Garage\Model\Indexer\Dropdown\Virtual"
+                 type="Ecommerce121\Garage\Model\Indexer\Dropdown" />
+
+    <!-- Dedicated log file for garage import -->
+    <type name="Ecommerce121\Garage\Setup\Patch\Data\ImportGarages">
+        <arguments>
+            <argument name="logger" xsi:type="object">Ecommerce121\Garage\Model\Logger\Virtual</argument>
+        </arguments>
+    </type>
+    <virtualType name="Ecommerce121\Garage\Model\Logger\Handler\Virtual"
+                 type="Magento\Framework\Logger\Handler\Base">
+        <arguments>
+            <argument name="filesystem" xsi:type="object">Magento\Framework\Filesystem\Driver\File</argument>
+            <argument name="fileName" xsi:type="string">/var/log/garage_import.log</argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="Ecommerce121\Garage\Model\Logger\Virtual"
+                 type="Monolog\Logger">
+        <arguments>
+            <argument name="name" xsi:type="string">garage_import</argument>
+            <argument name="handlers"  xsi:type="array">
+                <item name="system" xsi:type="object">Ecommerce121\Garage\Model\Logger\Handler\Virtual</item>
+            </argument>
+        </arguments>
+    </virtualType>
+</config>

@@ -1,0 +1,38 @@
+{
+    "ecommerce121_garage_vehicle": {
+        "column": {
+            "id": true,
+            "customer_id": true
+        },
+        "constraint": {
+            "PRIMARY": true,
+            "ECOMMERCE121_GARAGE_VEHICLE_CSTR_ID_CSTR_ENTT_ENTT_ID": true
+        }
+    },
+    "ecommerce121_garage_vehicle_values": {
+        "column": {
+            "id": true,
+            "vehicle_id": true,
+            "value_id": true
+        },
+        "constraint": {
+            "PRIMARY": true,
+            "FK_EA7FB63711DCC735FE97D87635E8F3F2": true
+        }
+    },
+    "ecommerce121_amasty_finder_value_index": {
+        "column": {
+            "index_id": true,
+            "value_id": true,
+            "parent_id": true,
+            "dropdown_id": true,
+            "name": true
+        },
+        "index": {
+            "ECOMMERCE121_AMASTY_FINDER_VALUE_INDEX_VALUE_ID": true
+        },
+        "constraint": {
+            "PRIMARY": true
+        }
+    }
+}

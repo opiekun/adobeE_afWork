@@ -1,0 +1,9 @@
+{
+  "tax_codes": {
+    "column": {
+      "county_or_city": true,
+      "code": true,
+      "rate": true
+    }
+  }
+}

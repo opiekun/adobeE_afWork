@@ -1,0 +1,278 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<layout xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_layout.xsd">
+    <update handle="1column" />
+    <body>
+        <referenceBlock name="product.bar" remove="false" />
+        <referenceBlock name="product.info.sku" remove="true" />
+    </body>
+    <referenceContainer name="columns.top">
+        <block class="Magento\Catalog\Block\Product\View\Description" name="product.intro" as="intro" template="Magento_Catalog::product/view/attribute.phtml" before="-">
+            <arguments>
+                <argument name="at_call" xsi:type="string">getIntroSection</argument>
+                <argument name="at_code" xsi:type="string">intro_section</argument>
+                <argument name="css_class" xsi:type="string">intro-section</argument>
+                <argument name="at_label" xsi:type="string">none</argument>
+                <argument name="sort_order" xsi:type="string">10</argument>
+            </arguments>
+        </block>
+    </referenceContainer>
+    <referenceContainer name="content">
+        <block class="Magento\Catalog\Block\Product\View" name="product.info.extras" template="Magento_Catalog::product/view/extras.phtml" before="product.info.details"/>
+    </referenceContainer>
+    <referenceContainer name="product.info.main">
+        <block class="Magento\Framework\View\Element\Template" name="product.perfb" template="Magento_Catalog::product/view/attributes_perf_b.phtml" after="product.info">
+            <block class="Magento\Catalog\Block\Product\View\Description" name="product.stats1b" as="stats1b" template="Magento_Catalog::product/view/attribute_perf_b.phtml">
+                <arguments>
+                    <argument name="at_call" xsi:type="string">getAfe_perf_air_flow_increase</argument>
+                    <argument name="at_code" xsi:type="string">afe_perf_air_flow_increases</argument>
+                    <argument name="css_class" xsi:type="string">afe_perf_air_flow_increase</argument>
+                    <argument name="at_label" xsi:type="string">FLOW INCREASE</argument>
+                    <argument name="sort_order" xsi:type="string">10</argument>
+                </arguments>
+            </block>
+            <block class="Magento\Catalog\Block\Product\View\Description" name="product.stats2b" as="stats2b" template="Magento_Catalog::product/view/attribute_perf_b.phtml">
+                <arguments>
+                    <argument name="at_call" xsi:type="string">getAfe_perf_hp_gain</argument>
+                    <argument name="at_code" xsi:type="string">afe_perf_hp_gain</argument>
+                    <argument name="css_class" xsi:type="string">afe_perf_hp_gain</argument>
+                    <argument name="at_label" xsi:type="string">HORSE POWER</argument>
+                    <argument name="sort_order" xsi:type="string">20</argument>
+                </arguments>
+            </block>
+            <block class="Magento\Catalog\Block\Product\View\Description" name="product.stats3b" as="stats3b" template="Magento_Catalog::product/view/attribute_perf_b.phtml">
+                <arguments>
+                    <argument name="at_call" xsi:type="string">getAfe_perf_tq_gain</argument>
+                    <argument name="at_code" xsi:type="string">afe_perf_tq_gain</argument>
+                    <argument name="css_class" xsi:type="string">afe_perf_tq_gain</argument>
+                    <argument name="at_label" xsi:type="string">TORQUE MAX GAINS</argument>
+                    <argument name="sort_order" xsi:type="string">30</argument>
+                </arguments>
+            </block> 
+        </block>
+        <block class="Magento\Catalog\Block\Product\View\Description" name="product.features" as="features_benefits" template="Magento_Catalog::product/view/attribute.phtml" after="product.info.bulletpoints">
+            <arguments>
+                <argument name="at_call" xsi:type="string">getAfeGlobalM1fb</argument>
+                <argument name="at_code" xsi:type="string">afe_global_m1fb</argument>
+                <argument name="css_class" xsi:type="string">features-benefits</argument>
+                <argument name="at_label" xsi:type="string">FEATURES &amp; BENEFITS</argument>
+                <argument name="sort_order" xsi:type="string">10</argument>
+            </arguments>
+        </block>
+        <block class="Magento\Catalog\Block\Product\View\Description" name="product.info.sku.tab" template="Magento_Catalog::product/view/attribute.phtml" after="product.features">
+            <arguments>
+                <argument name="at_call" xsi:type="string">getSku</argument>
+                <argument name="at_code" xsi:type="string">sku</argument>
+                <argument name="css_class" xsi:type="string">sku-tab</argument>
+                <argument name="at_label" xsi:type="string">Part Number:</argument>
+            </arguments>
+        </block>
+        <block class="Magento\Catalog\Block\Product\View\Description" name="product.specifications" as="specifications" template="Magento_Catalog::product/view/collapsible-attribute-spec.phtml" after="product.info.sku.tab">
+            <arguments>
+                <argument name="at_label" xsi:type="string" translate="true">Specifications</argument>
+                <argument name="css_class" xsi:type="string">specifications</argument>                          
+                <argument name="spec_items" xsi:type="array">
+                    <item name="intake_type" xsi:type="array">
+                        <item name="at_label" xsi:type="string" translate="true">Intake Type</item>
+                        <item name="at_call" xsi:type="string">getAfe_cais_intake_type</item>                        
+                        <item name="at_code" xsi:type="string">afe_cais_intake_type</item>
+                        <item name="at_type" xsi:type="string">text</item>                        
+                        <item name="sort_order" xsi:type="string">10</item>                        
+                    </item>
+                    <item name="housing_color" xsi:type="array">
+                        <item name="at_label" xsi:type="string" translate="true">Housing Color</item>
+                        <item name="at_call" xsi:type="string">getAfe_cais_housing_color</item>                        
+                        <item name="at_code" xsi:type="string">afe_cais_housing_color</item>
+                        <item name="at_type" xsi:type="string">text</item>                          
+                        <item name="sort_order" xsi:type="string">20</item>                     
+                    </item>
+                    <item name="Housing_Material" xsi:type="array">
+                        <item name="at_label" xsi:type="string" translate="true">Housing Material</item>
+                        <item name="at_call" xsi:type="string">getAfe_cais_housing_material</item>                        
+                        <item name="at_code" xsi:type="string">afe_cais_housing_material</item>
+                        <item name="at_type" xsi:type="string">text</item>                          
+                        <item name="sort_order" xsi:type="string">30</item>                     
+                    </item>   
+                    <item name="Replacement_Filter" xsi:type="array">
+                        <item name="at_label" xsi:type="string" translate="true">Replacement Filter</item>
+                        <item name="at_call" xsi:type="string">getAfe_cais_replacement_filter</item>                        
+                        <item name="at_code" xsi:type="string">afe_cais_replacement_filter</item>
+                        <item name="at_type" xsi:type="string">string</item>                          
+                        <item name="sort_order" xsi:type="string">40</item>                     
+                    </item>   
+                    <item name="Intake_Tube_Material" xsi:type="array">
+                        <item name="at_label" xsi:type="string" translate="true">Intake Tube Material</item>
+                        <item name="at_call" xsi:type="string">getAfe_cais_intake_tube_material</item>                        
+                        <item name="at_code" xsi:type="string">afe_cais_intake_tube_material</item>
+                        <item name="at_type" xsi:type="string">text</item>                          
+                        <item name="sort_order" xsi:type="string">50</item>                     
+                    </item>
+                    <item name="Intake_Tube_Color" xsi:type="array">
+                        <item name="at_label" xsi:type="string" translate="true">Intake Tube Color</item>
+                        <item name="at_call" xsi:type="string">getAfe_cais_intake_tube_color</item>                        
+                        <item name="at_code" xsi:type="string">afe_cais_intake_tube_color</item>
+                        <item name="at_type" xsi:type="string">text</item>                          
+                        <item name="sort_order" xsi:type="string">60</item>                     
+                    </item> 
+                    <item name="Filter_Included" xsi:type="array">
+                        <item name="at_label" xsi:type="string" translate="true">Filter Included</item>
+                        <item name="at_call" xsi:type="string">getAfe_cais_filter_included</item>                        
+                        <item name="at_code" xsi:type="string">afe_cais_filter_included</item>
+                        <item name="at_type" xsi:type="string">boolean</item>                          
+                        <item name="sort_order" xsi:type="string">70</item>                     
+                    </item>
+                    <item name="Oiled_or_Dry_Media" xsi:type="array">
+                        <item name="at_label" xsi:type="string" translate="true">Oiled or Dry Media</item>
+                        <item name="at_call" xsi:type="string">getAfe_cais_oiled_or_dry_media</item>                        
+                        <item name="at_code" xsi:type="string">afe_cais_oiled_or_dry_media</item>
+                        <item name="at_type" xsi:type="string">text</item>                          
+                        <item name="sort_order" xsi:type="string">80</item>                     
+                    </item>  
+                    <item name="Filter Material" xsi:type="array">
+                        <item name="at_label" xsi:type="string" translate="true">Filter Material</item>
+                        <item name="at_call" xsi:type="string">getAfe_cais_filter_material</item>                        
+                        <item name="at_code" xsi:type="string">afe_cais_filter_material</item>
+                        <item name="at_type" xsi:type="string">text</item>                          
+                        <item name="sort_order" xsi:type="string">90</item>                     
+                    </item>  
+                    <item name="Filter Color" xsi:type="array">
+                        <item name="at_label" xsi:type="string" translate="true">Filter Color</item>
+                        <item name="at_call" xsi:type="string">getAfe_cais_filter_color</item>                        
+                        <item name="at_code" xsi:type="string">afe_cais_filter_color</item>
+                        <item name="at_type" xsi:type="string">text</item>                          
+                        <item name="sort_order" xsi:type="string">100</item>                     
+                    </item>  
+                    <item name="Filter Flange Diameter" xsi:type="array">
+                        <item name="at_label" xsi:type="string" translate="true">Filter Flange Diameter</item>
+                        <item name="at_call" xsi:type="string">getAfe_cais_filter_flange_diameter</item>                        
+                        <item name="at_code" xsi:type="string">afe_cais_filter_flange_diameter</item>
+                        <item name="at_type" xsi:type="string">string</item>                          
+                        <item name="sort_order" xsi:type="string">110</item>                     
+                    </item>  
+                    <item name="Coupler Included" xsi:type="array">
+                        <item name="at_label" xsi:type="string" translate="true">Coupler Included</item>
+                        <item name="at_call" xsi:type="string">getAfe_cais_coupler_included</item>                        
+                        <item name="at_code" xsi:type="string">afe_cais_coupler_included</item>
+                        <item name="at_type" xsi:type="string">boolean</item>                          
+                        <item name="sort_order" xsi:type="string">120</item>                     
+                    </item>  
+                    <item name="Coupler Color" xsi:type="array">
+                        <item name="at_label" xsi:type="string" translate="true">Coupler Color</item>
+                        <item name="at_call" xsi:type="string">getAfe_cais_coupler_color</item>                        
+                        <item name="at_code" xsi:type="string">afe_cais_coupler_color</item>
+                        <item name="at_type" xsi:type="string">text</item>                          
+                        <item name="sort_order" xsi:type="string">130</item>                     
+                    </item>                                                                                                                                              
+                    <item name="Coupler Material" xsi:type="array">
+                        <item name="at_label" xsi:type="string" translate="true">Coupler Material</item>
+                        <item name="at_call" xsi:type="string">getAfe_cais_coupler_material</item>                        
+                        <item name="at_code" xsi:type="string">afe_cais_coupler_material</item>
+                        <item name="at_type" xsi:type="string">text</item>                          
+                        <item name="sort_order" xsi:type="string">140</item>                     
+                    </item>    
+                </argument>
+            </arguments>
+        </block>        
+        <block class="Magento\Catalog\Block\Product\View\Description" name="product.performance" as="performance" template="Magento_Catalog::product/view/collapsible-attribute-spec.phtml" after="product.specifications">
+            <arguments>
+                <argument name="at_label" xsi:type="string" translate="true">PERFORMANCE DATA</argument>
+                <argument name="css_class" xsi:type="string">performance</argument>                          
+                <argument name="spec_items" xsi:type="array">
+                    <item name="HP Gain" xsi:type="array">
+                        <item name="at_label" xsi:type="string" translate="true">HP Gain</item>
+                        <item name="at_call" xsi:type="string">getAfe_perf_hp_gain</item>                        
+                        <item name="at_code" xsi:type="string">afe_perf_hp_gain</item>
+                        <item name="at_before" xsi:type="string">+</item>
+                        <item name="at_after" xsi:type="string">HP</item>                        
+                        <item name="at_type" xsi:type="string">string</item>                        
+                        <item name="sort_order" xsi:type="string">10</item>                        
+                    </item>
+                    <item name="HP RPM" xsi:type="array">
+                        <item name="at_label" xsi:type="string" translate="true">HP RPM</item>
+                        <item name="at_call" xsi:type="string">getAfe_perf_hp_rpm</item>                        
+                        <item name="at_code" xsi:type="string">afe_perf_hp_rpm</item>
+                        <item name="at_type" xsi:type="string">string</item>                        
+                        <item name="sort_order" xsi:type="string">20</item>                        
+                    </item>
+                    <item name="TQ Gain" xsi:type="array">
+                        <item name="at_label" xsi:type="string" translate="true">TQ Gain</item>
+                        <item name="at_call" xsi:type="string">getAfe_perf_tq_gain</item>                        
+                        <item name="at_code" xsi:type="string">afe_perf_tq_gain</item>
+                        <item name="at_before" xsi:type="string">+</item>
+                        <item name="at_after" xsi:type="string">lbs. x ft.</item>                        
+                        <item name="at_type" xsi:type="string">string</item>                        
+                        <item name="sort_order" xsi:type="string">30</item>                        
+                    </item>
+                    <item name="TQ RPM" xsi:type="array">
+                        <item name="at_label" xsi:type="string" translate="true">TQ RPM</item>
+                        <item name="at_call" xsi:type="string">getAfe_perf_tq_rpm</item>                        
+                        <item name="at_code" xsi:type="string">afe_perf_tq_rpm</item>
+                        <item name="at_type" xsi:type="string">string</item>                        
+                        <item name="sort_order" xsi:type="string">40</item>                        
+                    </item>
+                    <item name="Air Flow Increase" xsi:type="array">
+                        <item name="at_label" xsi:type="string" translate="true">Air Flow Increase</item>
+                        <item name="at_call" xsi:type="string">getAfe_perf_air_flow_increase</item>                        
+                        <item name="at_code" xsi:type="string">afe_perf_air_flow_increase</item>
+                        <item name="at_before" xsi:type="string">+</item>
+                        <item name="at_after" xsi:type="string">%</item>                        
+                        <item name="at_type" xsi:type="string">string</item>                        
+                        <item name="sort_order" xsi:type="string">50</item>                        
+                    </item>
+                    <item name="Air Flow Rate - aFe" xsi:type="array">
+                        <item name="at_label" xsi:type="string" translate="true">Air Flow Rate - aFe</item>
+                        <item name="at_call" xsi:type="string">getAfe_perf_air_flow_rate_afe</item>                        
+                        <item name="at_code" xsi:type="string">afe_perf_air_flow_rate_afe</item>
+                        <item name="at_after" xsi:type="string">CFM</item>                        
+                        <item name="at_type" xsi:type="string">string</item>                        
+                        <item name="sort_order" xsi:type="string">60</item>                        
+                    </item>
+                    <item name="Air Flow Rate - OE" xsi:type="array">
+                        <item name="at_label" xsi:type="string" translate="true">Air Flow Rate - OE</item>
+                        <item name="at_call" xsi:type="string">getAfe_perf_air_flow_rate_oe</item>                        
+                        <item name="at_code" xsi:type="string">afe_perf_air_flow_rate_oe</item>
+                        <item name="at_before" xsi:type="string">+</item>
+                        <item name="at_after" xsi:type="string">CFM</item>                    
+                        <item name="at_type" xsi:type="string">string</item>                        
+                        <item name="sort_order" xsi:type="string">70</item>                        
+                    </item>                                                                                                    
+                    <item name="Measured Flow Restriction" xsi:type="array">
+                        <item name="at_label" xsi:type="string" translate="true">Measured Flow Restriction</item>
+                        <item name="at_call" xsi:type="string">getAfe_perf_measured_flow_restriction</item>                        
+                        <item name="at_code" xsi:type="string">afe_perf_measured_flow_restriction</item>
+                        <item name="at_type" xsi:type="string">string</item>                        
+                        <item name="sort_order" xsi:type="string">80</item>                        
+                    </item>                    
+
+                </argument>
+            </arguments>
+        </block>         
+        <block class="Magento\Cms\Block\Block" name="product.info.have_questions_type_b" after="-">
+            <arguments>
+                <argument name="block_id" xsi:type="string">pdp_type-b-have_questions</argument>
+            </arguments>
+        </block>
+        <block class="Magento\Catalog\Block\Product\View\Description" name="associated-products" template="Magento_Catalog::product/view/attribute.phtml" after="aslowas.after.price" >
+            <arguments>
+                <argument name="at_call" xsi:type="string">getAssociatedProducts</argument>
+                <argument name="at_code" xsi:type="string">associated_products</argument>
+                <argument name="css_class" xsi:type="string">associated-products</argument>
+                <argument name="at_label" xsi:type="string">none</argument>
+                <argument name="sort_order" xsi:type="string">10</argument>
+            </arguments>
+        </block>
+    </referenceContainer>
+    <referenceContainer name="product.info.social" remove="true" />
+    <referenceContainer name="product.info.media.add" remove="true" />
+    <referenceContainer name="product.info.overview" remove="true" />
+    <move element="page.main.title" destination="product.info.main" before="product.info.overview" after="product.info.brand.image"/>
+    <move element="product.info.upsell" destination="product.info.extras" before="-" />
+    <move element="catalog.product.crosssell" destination="product.info.extras" after="product.info.upsell" />
+    <move element="catalog.product.related" destination="content" after="product.info.details" />
+    <move element="view.addto.wishlist" destination="product.info.addtocart" />
+</layout>

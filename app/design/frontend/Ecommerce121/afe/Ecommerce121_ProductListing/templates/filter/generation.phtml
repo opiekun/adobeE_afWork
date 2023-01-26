@@ -1,0 +1,27 @@
+<?php
+/**
+ * @var Magento\Framework\View\Element\Template $block
+ * @var Ecommerce121\ProductListing\ViewModel\FilterGeneration $filter
+ * @var Magento\Framework\Escaper $escaper
+ */
+$filter = $block->getFilter();
+
+$currentCategory = $filter->getCurrentCategory();
+if (!$currentCategory || !$currentCategory->getData('has_generation_filter')) {
+    return;
+}
+?>
+<div class="generation-filter-container">
+    <div class="filter">
+        <span class="name"><?= $escaper->escapeHtml($filter->getLabel()) ?></span>
+        <ul class="items">
+            <?php foreach ($filter->getOptions() as $option): ?>
+                <li class="item <?= $escaper->escapeHtml($option['selected']) ?>">
+                    <a href="<?= $escaper->escapeHtml($option['url']) ?>">
+                        <?= $escaper->escapeHtml($option['name']) ?>
+                    </a>
+                </li>
+            <?php endforeach; ?>
+        </ul>
+    </div>
+</div>

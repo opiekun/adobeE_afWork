@@ -1,0 +1,40 @@
+<?php
+/**
+ * Product view template
+ *
+ * @var $block \Magento\Catalog\Block\Product\View
+ */
+?>
+
+<?php
+$product = $block->getProduct();
+if ($product->getUpSellProductIds() || $product->getCrossSellProductIds()): ?>
+    <?php if ($product->getPageLayout() === 'product-type-b') : ?>
+        <div class="collapsible-block block-extras"  data-mage-init='{"collapsible":{"collapsible": true, "active": false }}'>
+            <h3 class="block-title title" role="heading"  data-role="title">
+                <span id="block-extras block-extras-heading" role="heading" aria-level="2">
+                    <?= $block->escapeHtml(__('EXTRAS')) ?>
+                </span>
+            </h3>
+            <div class="block-content content" data-mage-init='{"extrasProducts":{"extrasCheckbox":".extras.checkbox"}}'
+                 data-role="content" aria-labelledby="block-extras-heading" style="display:block">
+                <form action="<?= $block->escapeUrl($block->getUrl('extras/cart/add')) ?>"
+                      method="post" class="extra-cart-form" id="product_addtocart_form">
+                    <input type="hidden" name="extras_product" id="extras-products-field" value="" />
+                    <input type="hidden" name="form_key" value="<?= $block->escapeHtml($block->getFormKey()) ?>"/>
+                    <input type="hidden" name="product"
+                           value="<?= $block->escapeHtml($block->getProduct()->getId()) ?>" />
+                    <?= $block->getChildHtml(''); ?>
+                    <div class="bundle-add-to-cart">
+                        <button disabled id="extras-products-add-to-cart" type="submit"
+                                title="<?= $block->escapeHtmlAttr(__('Add to Cart')) ?>" class="action">
+                            <span class="bundle-button"><?= $block->escapeHtml(__('Add to Cart')) ?></span>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    <?php else :?>
+        <?= $block->getChildHtml(''); ?>
+    <?php endif; ?>
+<?php endif; ?>

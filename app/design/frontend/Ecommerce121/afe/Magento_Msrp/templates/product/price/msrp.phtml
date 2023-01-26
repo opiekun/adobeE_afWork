@@ -1,0 +1,37 @@
+<?php
+
+/**
+ * Template for displaying product price at product view page, gift registry and wish-list
+ *
+ * @var $block \Magento\Msrp\Pricing\Render\PriceBox
+ * @var \Magento\Framework\View\Helper\SecureHtmlRenderer $secureRenderer
+ */
+?>
+<?php
+
+/** @var Magento\Msrp\Pricing\Price\MsrpPriceInterface $priceType */
+$priceType = $block->getPrice();
+
+/** @var $product \Magento\Catalog\Model\Product */
+$product = $block->getSaleableItem();
+$productId = $product->getId();
+
+$amount = $block->getMsrpPriceCalculator()->getMsrpPriceValue($product);
+
+$msrpPrice = $block->renderAmount(
+    $priceType->getCustomAmount($amount),
+    [
+        'price_id' => $block->getPriceId() ? $block->getPriceId() : 'old-price-' . $productId,
+        'include_container' => false,
+        'skip_adjustments' => true
+    ]
+);
+$priceElementIdPrefix = $block->getPriceElementIdPrefix() ? $block->getPriceElementIdPrefix() : 'product-price-';
+?>
+
+<?= $block->getRealPriceHtml() ?>
+
+<?php if ($amount): ?>
+    <span class="old-price map-old-price"><span class="msrp-price-label">MSRP:</span><?= /* @noEscape */ $msrpPrice ?></span>
+    <span class="map-fallback-price normal-price"><?= /* @noEscape */ $msrpPrice ?></span>
+<?php endif; ?>

@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <referenceBlock name="head.additional">
+        <block template="Nextopia_Search::frontend/head.phtml"
+               class="Magento\Framework\View\Element\Template"
+               name="nextopia.search.nsearch.head"
+               after="-">
+            <arguments>
+                <argument name="is_search_page" xsi:type="boolean">true</argument>
+            </arguments>
+        </block>
+    </referenceBlock>
+    <!-- Those blocks need to be moved from content(.column.main) to somewhere because they contain all functionalities of 'Cutomer data' -->
+    <move element="customer.section.config" destination="head.additional"/>
+    <move element="customer.customer.data" destination="head.additional"/>
+    <move element="customer.data.invalidation.rules" destination="head.additional"/>
+    <move element="catalogsearch.product.addto" destination="head.additional"/>
+    <move element="banner.data" destination="head.additional"/>
+    <move element="authentication-popup" destination="head.additional"/>
+    <move element="product.tooltip" destination="head.additional"/>
+    <!-- Removing next blocks Doesn't run the Sql Query for default categorysearch result page (Results and Refinements) -->
+    <referenceBlock name="search.result" remove="true"/>
+    <referenceBlock name="catalogsearch.leftnav" remove="true"/>
+    <!-- Replacing empty sidebar.main container lets Magento2 displays it on the search page -->
+    <referenceContainer name="sidebar.main">
+        <block class="Magento\Framework\View\Element\Text" name="nextopia.search.nsearch.nav">
+            <arguments>
+                <argument name="text" xsi:type="string"><![CDATA[<!-- Nxt Nav-->]]></argument>
+            </arguments>
+        </block>
+    </referenceContainer>
+</page>

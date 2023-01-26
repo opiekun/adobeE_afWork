@@ -1,0 +1,26 @@
+<?php
+/**
+ * @var Magento\Framework\View\Element\Template $block
+ * @var Magento\Framework\Escaper $escaper
+ */
+?>
+
+<script type="text/x-magento-init">
+{
+    "*": {
+        "Magento_Ui/js/core/app": {
+            "components": {
+                "ecommerce121-related-products-add-to-cart": {
+                    "component": "Ecommerce121_RelatedProducts/js/add-to-cart",
+                    "template": "Ecommerce121_RelatedProducts/add_to_cart",
+                    "ajaxUrl": "<?= $escaper->escapeUrl($block->getUrl('related_products/cart/add')) ?>"
+                }
+            }
+        }
+    }
+}
+</script>
+
+<div class="actions" data-bind="scope: 'ecommerce121-related-products-add-to-cart'">
+    <!-- ko template: getTemplate() --><!-- /ko -->
+</div>

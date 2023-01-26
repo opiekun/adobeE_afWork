@@ -1,0 +1,51 @@
+<!--
+    Amasty ammenu_tree_wrapper UiComponent
+    { item: current_elem, columns: columns_count, $parent: ammenu_tree_wrapper }
+-->
+
+<div data-bind="
+        attr: {
+            class: 'ammenu-category-tree ammenu-column category-item' + ' -index-' + $index() + ' -col-' + $data.columns + ' ' + activeLevel.navLevelSelector + ' ' + ( $index() == 1? 'active' : ''),
+        },
+        afterRender: $parent.init($data),
+        event: {
+            mouseenter: $parent.onMouseenter.bind($data, event),
+            mouseleave: $parent.onMouseleave.bind($data, event)
+        }
+    ">
+
+    <!-- ko template: { name: $parent.templates.title, data: { elem: activeLevel } } --><!-- /ko -->
+
+    <ul class="ammenu-list" if="activeLevel().elems.length && !activeLevel().hide_content" data-bind="foreach: activeLevel().elems">
+        <li data-bind="
+                attr: {
+                    class: 'ammenu-item category-item' + ' ' + $data.navLevelSelector
+                }">
+            <!-- ko scope: 'index = ammenu_tree_wrapper' -->
+                <!-- ko template: {
+                    name: root_templates.link,
+                    data: {
+                        item: $parent,
+                        additionalClasses: '-simple',
+                        toggle: $parent.elems.length ? true : false,
+                        event: {
+                            click: setNextLevel.bind($data, $parents[1].activeLevel, $parent),
+                            mouseenter: onMouseenter.bind($data, $parent),
+                            mouseleave: onMouseleave.bind($data, $parent)
+                        }
+                    }
+                } -->
+                <!-- /ko -->
+            <!-- /ko -->
+
+            <!-- Custom Submenu for desktop -->
+            <!-- ko if: $data.elems.length -->
+            <a class="ammenu-link desktop-only" data-bind="attr: { 'href': $data.url }"><span data-bind="text: $data.name"></span></a>
+            <ul class="items-list desktop-only" data-bind="foreach: { data: $data.elems, as: 'elem' }">
+                <li class="category-item"><a class="link" data-bind="attr: { 'href': elem.url }"><span data-bind="text: elem.name"></span></a></li>
+            </ul>
+            <!-- /ko -->
+
+        </li>
+    </ul>
+</div>

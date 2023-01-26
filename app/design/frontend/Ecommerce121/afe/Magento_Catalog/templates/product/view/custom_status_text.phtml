@@ -1,0 +1,16 @@
+<?php
+/**
+ * @var $block \Magento\Catalog\Block\Product\View
+ */
+?>
+<?php
+    $product = $block->getProduct();
+    $customTextAttribute = $product->getResource()->getAttribute('custom_text_status');
+
+    if ($customTextAttribute) :
+        $customTextAttributeValue = $customTextAttribute->getFrontend()->getValue($product);
+?>
+    <div class="custom-text-status">
+        <span><?= $customTextAttributeValue; ?></span>
+    </div>
+<?php endif; ?>

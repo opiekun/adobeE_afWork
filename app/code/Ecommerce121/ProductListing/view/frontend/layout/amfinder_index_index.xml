@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="2columns-left"
+      xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceContainer name="page.top">
+            <block class="Magento\Catalog\Block\Product\ListProduct"
+                   name="ecommerce.plp.menu"
+                   after="navigation.sections"
+                   template="Ecommerce121_ProductListing::finder_plp_menu.phtml">
+                <arguments>
+                    <argument name="menu" xsi:type="object">Ecommerce121\ProductListing\ViewModel\Menu</argument>
+                </arguments>
+            </block>
+        </referenceContainer>
+        <referenceBlock name="breadcrumbs" remove="true" />
+    </body>
+</page>

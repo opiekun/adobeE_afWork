@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+    <table name="amasty_finder_finder" resource="default" engine="innodb">
+        <column xsi:type="smallint" name="range_by_first_dropdown" nullable="false" unsigned="true" default="0"/>
+    </table>
+    <table name="amasty_finder_dropdown" resource="default" engine="innodb">
+        <column xsi:type="smallint" name="hide_in_form" nullable="false" unsigned="true" default="0"/>
+        <column xsi:type="smallint" name="required" nullable="false" unsigned="true" default="0"/>
+    </table>
+</schema>

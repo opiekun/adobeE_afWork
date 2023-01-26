@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <eyehubspot>
+            <newsletter_signup_from>
+                <endpoint>https://forms.hubspot.com/uploads/form/v2/3902077/94c77a7a-a46f-4511-9c59-f38c9cdc5b9c</endpoint>
+                <request_parameter_mapping>{"item1":{"form_input_name":"email","hubspot_parameter_name":"email"},"item2":{"form_input_name":"year","hubspot_parameter_name":"eyemagine_afe_primary_vehicle_year"},"item3":{"form_input_name":"make","hubspot_parameter_name":"eyemagine_afe_primary_vehicle_make"},"item4":{"form_input_name":"model","hubspot_parameter_name":"eyemagine_afe_primary_vehicle_model"},"item5":{"form_input_name":"fuel","hubspot_parameter_name":"eyemagine_afe_primary_vehicle_engine"},"item6":{"form_input_name":"engine","hubspot_parameter_name":"eyemagine_afe_primary_vehicle_fuel_type"}}</request_parameter_mapping>
+            </newsletter_signup_from>
+        </eyehubspot>
+    </default>
+</config>

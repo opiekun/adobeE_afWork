@@ -1,0 +1,28 @@
+<div class="my-vehicle">
+    <div class="title-info">
+        <h3 data-bind="text: title"></h3>
+        <!-- ko if: !!vehicleId -->
+        <span class="delete-button" data-bind="text: '[DELETE]', event: { click: deleteVehicle }"></span>
+        <!-- /ko -->
+        <span data-bind="text: description"></span>
+    </div>
+
+    <!-- ko foreach: { data: activeDropdowns, as: 'dropdown'  } -->
+    <div class="field">
+        <label data-bind="i18n: dropdown.label, attr:{for: 'dropdown-' + dropdown.dropdownId}"></label>
+        <select data-bind="attr:{
+                        name: 'garage_vehicle[' + dropdown.dropdownId + ']',
+                        'data-dropdown-id': dropdown.dropdownId,
+                        id: 'dropdown-' + dropdown.dropdownId + '-' + $parent.vehicleId
+                    },
+                    options: dropdown.options,
+                    optionsText: 'label',
+                    optionsValue: 'valueId',
+                    value: dropdown.selected,
+                    disable: dropdown.options.length === 0,
+                    optionsCaption: '--Please choose an option--',
+                event: { change: $parent.changeDropdown.bind($parent) }">
+        </select>
+    </div>
+    <!-- /ko -->
+</div>

@@ -1,0 +1,9 @@
+<?php
+/** @var Magento\Framework\View\Element\Template $block */
+$viewModelHubspot = $block->getViewModelHubspot();
+$script = $viewModelHubspot->getScript();
+if ($script != null) : ?>
+<!-- Start of HubSpot Embed Code -->
+<script type="text/javascript" id="hs-script-loader" async defer src="//js.hs-scripts.com/<?= $script ?>.js"></script>
+<!-- End of HubSpot Embed Code -->
+<?php endif; ?>

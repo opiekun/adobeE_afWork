@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <preference for="Ecommerce121\ProductVariation\Model\ResourceModel\VariantProvider"
+                type="Ecommerce121\VariantOrder\Model\ResourceModel\VariantProvider" />
+    <type name="Magento\Framework\Console\CommandListInterface">
+        <arguments>
+            <argument name="commands" xsi:type="array">
+                <item name="ecommerce121_variantorder_add_variant_order" xsi:type="object">
+                    Ecommerce121\VariantOrder\Console\Command\AddVariantOrder
+                </item>
+            </argument>
+        </arguments>
+    </type>
+</config>

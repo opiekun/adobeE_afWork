@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © 2016 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <nextopia_search>
+            <general>
+                <default_content>&lt;img src="/skin/frontend/base/default/images/ajax-loader-c.gif" /&gt;</default_content>
+                <label_search_result_page>Search results for</label_search_result_page>
+            </general>
+        </nextopia_search>
+        <csp>
+            <mode>
+                <storefront>
+                    <report_only>0</report_only>
+                </storefront>
+                <admin>
+                    <report_only>0</report_only>
+                </admin>
+            </mode>
+        </csp>         
+    </default>
+</config>

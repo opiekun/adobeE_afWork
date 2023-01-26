@@ -1,0 +1,49 @@
+<?php
+/**
+ * @author Amasty Team
+ * @copyright Copyright (c) 2021 Amasty (https://www.amasty.com)
+ * @package Amasty_ProductAttachment
+ */
+?>
+<?php
+/** @var \Amasty\ProductAttachment\Block\Widgets\AttachmentsList $block */
+?>
+<?php if ($files = $block->getAttachments()): ?>
+
+    <div data-mage-init='{"collapsible":{"collapsible": true, "trigger": ".type", "header": ".type", "content": ".value" }}'
+        class="product attribute documents" id="info-documents">
+        <strong class="type"><?= __('Documents'); ?></strong>
+        <div class="value" >
+            <ul>
+                <?php foreach ($files as $file): ?>
+                    <li>
+                        <a href="<?= $block->escapeUrl($file->getFrontendUrl()) ?>" target="_blank">
+                            <?php
+                                $_label = $file->getLabel();
+                                $_src = "";
+                                if (strpos(strtolower($_label), 'air') !== false) {
+                                    $_src = $this->getViewFileUrl('images/pdp-files-airflowchart.png');
+                                    $_label = "";
+                                } elseif (strpos(strtolower($_label), 'dino') !== false) {
+                                    $_src = $this->getViewFileUrl('images/pdp-files-dynochart.png');
+                                    $_label = "";
+                                } elseif (strpos(strtolower($_label), 'dyno') !== false) {
+                                    $_src = $this->getViewFileUrl('images/pdp-files-dynochart.png');
+                                    $_label = "";
+                                } elseif (strpos(strtolower($_label), 'instr') !== false) {
+                                    $_src = $this->getViewFileUrl('images/pdp-files-instructions.png');
+                                    $_label = "";
+                                } else {
+                                    $_src = $file->getIconUrl();
+                                }
+                            ?>
+
+                            <img src="<?php echo $_src; ?>" title="<?= $_label ?>"/>
+                            <span><?= $_label ?></span>
+                        </a>
+                    </li>
+                <?php endforeach; ?>
+            </ul>
+        </div>
+    </div>
+<?php endif; ?>

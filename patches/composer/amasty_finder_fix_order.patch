@@ -1,0 +1,14 @@
+diff --git a/vendor/amasty/finder/Block/Product/View/OptionsList.php b/vendor/amasty/finder/Block/Product/View/OptionsList.php
+index 9b54937..71d3ca2 100644
+--- a/vendor/amasty/finder/Block/Product/View/OptionsList.php
++++ b/vendor/amasty/finder/Block/Product/View/OptionsList.php
+@@ -94,8 +94,7 @@ class OptionsList extends \Magento\Framework\View\Element\Template
+                     $names[$finderValue->getId()] = array_reverse($names[$finderValue->getId()]);
+                 }
+             }
+-
+-            usort($names, [$this, 'sortOptions']);
++
+             $this->options[$finderId] = $names;
+         }
+

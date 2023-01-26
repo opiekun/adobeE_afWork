@@ -1,0 +1,14 @@
+diff --git a/vendor/amasty/module-export-core/Processing/JobManager.php b/vendor/amasty/module-export-core/Processing/JobManager.php
+index b5540da..1fd89fa 100755
+--- a/vendor/amasty/module-export-core/Processing/JobManager.php
++++ b/vendor/amasty/module-export-core/Processing/JobManager.php
+@@ -70,7 +70,8 @@ class JobManager
+
+         $identity = $this->processRepository->initiateProcess($profileConfig, $identity);
+
+-        $phpPath = $this->cliPhpResolver->getExecutablePath();
++       // $phpPath = $this->cliPhpResolver->getExecutablePath();
++        $phpPath = 'php';
+         $this->shell->execute(
+             $phpPath . ' %s amasty:export:run-job %s > /dev/null &',
+             [

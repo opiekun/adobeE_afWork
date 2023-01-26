@@ -1,0 +1,292 @@
+<?php $_product = $block->getProduct(); ?>
+<div class="page-title-wrapper product">
+    <h1 class="page-title"><?php echo $_product->getName(); ?></h1>
+</div>
+<?php
+$submitUrl = $block->getSubmitUrl($_product);
+$buttonTitle = strpos($submitUrl, 'update') !== false ? $buttonTitle = __('Update Cart') : $buttonTitle = __('Add to Cart');
+$urlMedia = $block->getMediaUrl();
+/**
+ * @var Ecommerce121\Basket\Block\Product\View\Type\Basket $block
+ */
+$slots = $block->getSlots();
+$pos = $block->getPositioned();
+?>
+
+<form data-product-sku="<?php echo $block->escapeHtml($_product->getSku()); ?>"
+      class="form-basket-list slider-view"
+      action="<?php echo /* @NoEscape */ $submitUrl; ?>" method="post"
+      id="product_addtocart_form"
+    <?php if ($_product->getOptions()) : ?>
+        enctype="multipart/form-data"
+    <?php endif; ?> >
+    <input type="hidden" name="product" value="<?php echo /* @escapeNotVerified */ $_product->getId(); ?>" />
+    <input type="hidden" name="price_type" data-price="<?php echo $_product->getPrice(); ?>"
+           id="price_type" value="<?php echo $_product->getPriceType(); ?>" />
+    <input type="hidden" name="item"  value="<?php echo /* @noEscape */ $block->getRequest()->getParam('id'); ?>" />
+    <input type="hidden" name="number_of_slots"  id="number_of_slots" value="<?php echo count($slots); ?>" />
+    <input type="hidden" name="basket_layout"  id="basket_layout" value="<?php echo $_product->getBasketLayout(); ?>" />
+    <input type="hidden" name="product_to_basket"  id="product_to_basket" value="" />
+    <?php echo $block->getBlockHtml('formkey'); ?>
+
+    <div class="container-basket">
+        <div class="tabs-container owl-carousel">
+            <?php $slotNumber = 1; ?>
+            <?php foreach ($slots as $slotTab) : ?>
+            <?php $maxQtyAllowed[] = $slotTab->getMaxQtyAllowed(); ?>
+            <?php if ($block->getUseDefaultImage()) : ?>
+            <div class="tab-info image-tab">
+                <div class="img-slot">
+                    <img alt="<?php echo $slotTab->getName() ?>" title="<?php echo $slotTab->getName() ?>"
+                         src="<?php echo $slotTab->getImage() != '' ? $urlMedia . $slotTab->getImage() : $urlMedia . 'slot_default_image.png'; ?>" >
+                </div>
+                <?php else: ?>
+            <?php if ($slotTab->getImage()) : ?>
+                <div class="tab-info image-tab">
+                    <div class="img-slot">
+                        <img alt="<?php echo $slotTab->getName() ?>" title="<?php echo $slotTab->getName() ?>"
+                             src="<?php echo $urlMedia . $slotTab->getImage() ?>" >
+                    </div>
+                    <?php else: ?>
+                    <div class="tab-info">
+                        <?php endif; ?>
+                        <?php endif; ?>
+                        <input type="hidden" name="data-slot-<?= $slotNumber ?>"
+                               id="data-slot-info-<?php echo $slotNumber; ?>"
+                               data-slot-name = "<?php echo $slotTab->getName(); ?>"
+                               data-max-qty-allowed="<?php echo $slotTab->getMaxQtyAllowed(); ?>"  value="0" />
+                        <a href="<?php echo "#tab" . $slotNumber ?>" data-tab-id="<?= $slotNumber ?>"> <?php echo $slotTab->getName(); ?></a>
+                    </div>
+                    <?php $slotNumber++ ?>
+                    <?php endforeach ?>
+                </div>
+                <?php
+                /**
+                 * @var \Ecommerce121\Basket\Block\Product\View\Type\Basket $block
+                 **/
+                $slotNumber = 1;
+                foreach ($slots as $slotTab) :
+                    $idSlot = $slotTab->getSlotId();
+                    $items = $block->getAllItems($idSlot);
+                    $image = 'category_page_list';
+                    ?>
+                    <div class="products wrapper grid products-grid product-grid-basket"
+                         id="<?php echo "tab" . $slotNumber ?>">
+                        <ol class="products list basket owl-carousel">
+                            <?php $iterator = 1; ?>
+                            <?php foreach ($items as $_item) : ?>
+                            <li class="item-<?php echo /* @escapeNotVerified */ $_item->getSku(); ?>">
+                                <?php if ($_item->getTypeId() != 'configurable') : ?>
+                                    <div class="product-item-info simple"
+                                         data-tab-id="<?= (int) $slotNumber ?>"
+                                         data-sku="<?= $block->escapeHtml($_item->getSku()) ?>">
+                                        <strong class="product name product-item-name">
+                                                    <span class="product-item-link">
+                                                        <?php echo $block->escapeHtml($_item->getName()); ?></span>
+                                        </strong>
+                                        <?php echo $block->getImage($_item, $image)->toHtml() ?>
+                                        <div class="product details product-item-details">
+                                            <?php
+                                            if ($_product->getPriceType() == 0) {
+                                                echo /* @escapeNotVerified */ $block->getProductPrice($_item);
+                                            }
+                                            ?>
+                                        </div>
+                                    </div>
+                                    <div class="qty-info-basket" style="display:none;">
+                                        <div class="info-product" data-sku="<?php echo $_item->getSku(); ?>">
+                                            <div class="gallery-product">
+                                                <?php echo $block->getImage($_item, $image)->toHtml() ?>
+                                            </div>
+                                            <div class="info-product-detalis">
+                                                <div class="product-name">
+                                                    <?php echo $block->escapeHtml($_item->getName()); ?>
+                                                </div>
+                                                <div class="product-sku">
+                                                    <?php echo /* @escapeNotVerified */ __('SKU#: '); echo /* @escapeNotVerified */ $_item->getSku(); ?>
+                                                </div>
+                                                <div class="product-price">
+                                                    <?php
+                                                    if ($_product->getPriceType() == 0) {
+                                                        echo /* @escapeNotVerified */ $block->getProductPrice($_item);
+                                                    }
+                                                    ?>
+                                                </div>
+                                                <div class="box-tocart">
+                                                    <label class="label" for="qty">
+                                                        <span><?php echo /* @escapeNotVerified */ __('Qty'); ?></span>
+                                                    </label>
+                                                    <div class="control">
+                                                        <span class="btnSubQty"> - </span>
+                                                        <input type="number"
+                                                               data-selector="product_to_basket[<?php echo $_item->getSku(); ?>]"
+                                                               data-slot="<?php echo $slotNumber; ?>"
+                                                               data-sku="<?php echo $_item->getSku(); ?>"
+                                                               data-product-id="<?php echo $_item->getId(); ?>"
+                                                               data-product-name="<?php echo $_item->getName(); ?>"
+                                                               value="0"
+                                                               title="<?php echo __('Qty'); ?>"
+                                                               class="input-text qty items-qty"/>
+                                                        <span class="btnSumQty"> + </span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div>
+                                                <h2><?php echo /* @escapeNotVerified */ __('Description'); ?></h2>
+                                                <?php echo $_item->getDescription(); ?>
+                                            </div>
+                                        </div>
+                                    </div>
+                                <?php
+                                else : ?>
+                                    <?php
+                                    /** @var $block \Magento\Swatches\Block\Product\Renderer\Configurable */
+                                    $block->setProduct($_item); ?>
+                                    <div class="product-item-info configurable"
+                                         data-tab-id="<?= (int) $slotNumber ?>"
+                                         data-sku="<?= $block->escapeHtml($_item->getSku()) ?>">
+                                        <?php
+                                        $productImage = $block->getImage($_item, $image);
+                                        if ($pos != null) {
+                                            $position = ' style="left:' . $productImage->getWidth() . 'px;'
+                                                . 'top:' . $productImage->getHeight() . 'px;"';
+                                        }
+                                        ?>
+                                        <div class="product details product-item-details">
+                                            <?php echo $productImage->toHtml() ?>
+                                            <strong class="product name product-item-name">
+                                                <?php echo /* @escapeNotVerified */ $_item->getName(); ?>
+                                            </strong>
+                                            <?php echo /* @escapeNotVerified */ $block->getProductPrice($_item) ?>
+                                        </div>
+                                    </div>
+                                <?php endif; ?>
+
+                                <?php echo ($iterator == count($items)+1) ? '</li>' : '' ?>
+
+                                <?php endforeach //end foreach $_item?>
+                        </ol>
+
+                        <?php foreach ($items as $_item) : ?>
+                            <?php if ($_item->getTypeId() == 'configurable') : ?>
+
+                                <?php
+                                /** @var $block \Magento\Swatches\Block\Product\Renderer\Configurable */
+                                $block->setProduct($_item); ?>
+                                <div class="product-item-info  hideconfigurable configurable-<?php echo $_item->getSku(); ?>" style="display: none;">
+                                    <?php
+                                    $productImage = $block->getImage($_item, $image);
+                                    if ($pos != null) {
+                                        $position = ' style="left:' . $productImage->getWidth() . 'px;'
+                                            . 'top:' . $productImage->getHeight() . 'px;"';
+                                    }
+                                    ?>
+                                    <div class="product details product-item-details info-product">
+                                        <div class="gallery-product">
+                                            <?php echo $productImage->toHtml() ?>
+                                        </div>
+                                        <div class="info-product-detalis">
+                                            <div class="product-name">
+                                                <?php echo /* @escapeNotVerified */ $_item->getName(); ?>
+                                            </div>
+                                            <div class="product-sku">
+                                                <?php echo /* @escapeNotVerified */ __('SKU#: '); echo /* @escapeNotVerified */ $_item->getSku(); ?>
+                                            </div>
+                                            <div class="product-price">
+                                                <?php echo /* @escapeNotVerified */ $block->getProductPrice($_item) ?>
+                                            </div>
+                                            <div class="options-item">
+                                                <?php echo $block->getProductDetailsHtml($_item) ?>
+                                            </div>
+                                            <div class="box-tocart">
+                                                <label class="label" for="qty">
+                                                    <span><?php echo /* @escapeNotVerified */ __('Qty'); ?></span>
+                                                </label>
+                                                <div class="control">
+                                                    <input type="hidden" name="hdn_configurable_sku_<?php echo $_item->getId(); ?>" id="hdn_configurable_sku_<?php echo $_item->getId(); ?>" value="" />
+                                                    <span class="btnSubQty"> - </span>
+                                                    <input type="number"
+                                                           data-slot="<?php echo $slotNumber; ?>"
+                                                           data-sku=""
+                                                           data-product-id="<?php echo $_item->getId(); ?>"
+                                                           data-product-name="<?php echo $_item->getName(); ?>"
+                                                           value="0"
+                                                           title="<?php echo __('Qty'); ?>"
+                                                           class="input-text qty items-qty-configurable"/>
+                                                    <span class="btnSumQty"> + </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <h2><?php echo /* @escapeNotVerified */ __('Description'); ?></h2>
+                                        <?php
+                                        echo $_item->getDescription();
+                                        ?>
+                                    </div>
+                                </div>
+                            <?php endif; ?>
+                        <?php endforeach; ?>
+
+                        <div class="info-details-product" id="product-focus-<?php echo $slotNumber?>" >
+
+                        </div>
+                    </div>
+                    <?php $slotNumber++; ?>
+                <?php endforeach //end foreach slots?>
+            </div>
+            <div class="summary-basket">
+                <div class="summary-global">
+                    <h3 class="title-summary"><?php echo /* @escapeNotVerified */ __('Your Basket'); ?></h3>
+                    <div class="info-summary"></div>
+                </div>
+                <div class="items-selected">
+                    <?php $slotNumber = 1; ?>
+                    <?php foreach ($slots as $slotTab) : ?>
+                        <div class="<?php echo "data-slot-" . $slotNumber ?>">
+                            <h4 class="title">
+                                <span><?php echo $slotTab->getName(); ?></span>
+                                <span class="info-selected-items">
+                            <span id="max_qty_by_slot_added_<?php echo $slotNumber; ?>">0</span>
+                                        <?php
+                                        echo $maxQtyAllowed[$slotNumber -1] > 0 ?
+                                            'out of ' . $maxQtyAllowed[$slotNumber -1] . ' selected' : 'selected';
+                                        ?>
+                        </span>
+                            </h4>
+                            <div class="replace-content"></div>
+                        </div>
+                        <?php $slotNumber++; ?>
+                    <?php endforeach ?>
+                </div>
+                <div class="grand-total">
+                    <div class="label-total"><?php echo /* @escapeNotVerified */ __('TOTAL'); ?></div>
+                    <div id="total-final"><?php echo /* @escapeNotVerified */ __('$'); ?>
+                        <span class="price-final"><?php echo number_format($_product->getPrice(), 2); ?></span>
+                    </div>
+                </div>
+                <div class="actions">
+                    <div class="qty-label">
+                        <label><?php echo /* @escapeNotVerified */ __('Basket Qty'); ?></label>
+                        <input type="number"
+                               name="qty"
+                               id="qty"
+                               value="1"
+                               title="<?php echo /* @escapeNotVerified */ __('Qty'); ?>"
+                               class="input-text qty"
+                        />
+                    </div>
+                    <button type="button"
+                            title="<?php echo /* @escapeNotVerified */ $buttonTitle; ?>"
+                            class="action primary tocart"
+                            id="product-addtocart-button">
+                        <span><?php echo /* @escapeNotVerified */ $buttonTitle; ?></span>
+                    </button>
+                </div>
+            </div>
+</form>
+<script>
+    require(['carouselTabs', 'basketSlider'], function (carouselTabs, basketSlider) {
+        basketSlider();
+    });
+</script>

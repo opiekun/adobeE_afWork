@@ -1,0 +1,12 @@
+<?php
+/** @var Magento\Framework\View\Element\Template $block */
+?>
+
+<?php if ($block->getChildHtml('stats1') || $block->getChildHtml('stats2') || $block->getChildHtml('stats3')): ?>
+    <div class="product-info-media-add__title"><?= __('Adds Up To:')?></div>
+    <div class="product-info-media-add__container">
+        <?= $block->getChildHtml('stats1'); ?>
+        <?= $block->getChildHtml('stats2'); ?>
+        <?= $block->getChildHtml('stats3'); ?>
+    </div>
+<?php endif; ?>

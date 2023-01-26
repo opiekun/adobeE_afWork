@@ -1,0 +1,46 @@
+<?xml version="1.0"?>
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+    <table name="ecommerce121_garage_vehicle" resource="default" engine="innodb">
+        <column xsi:type="int" name="id" nullable="false" unsigned="true" identity="true"/>
+        <column xsi:type="int" name="customer_id" nullable="false" unsigned="true"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="id"/>
+        </constraint>
+        <constraint xsi:type="foreign"
+                    referenceId="ECOMMERCE121_GARAGE_VEHICLE_CSTR_ID_CSTR_ENTT_ENTT_ID"
+                    table="ecommerce121_garage_vehicle"
+                    column="customer_id"
+                    referenceTable="customer_entity"
+                    referenceColumn="entity_id"
+                    onDelete="CASCADE"/>
+    </table>
+    <table name="ecommerce121_garage_vehicle_values" resource="default" engine="innodb">
+        <column xsi:type="int" name="id" nullable="false" unsigned="true" identity="true"/>
+        <column xsi:type="int" name="vehicle_id" nullable="false" unsigned="true"/>
+        <column xsi:type="int" name="value_id" nullable="false" unsigned="true"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="id"/>
+        </constraint>
+        <constraint xsi:type="foreign"
+                    referenceId="FK_EA7FB63711DCC735FE97D87635E8F3F2"
+                    table="ecommerce121_garage_vehicle_values"
+                    column="vehicle_id"
+                    referenceTable="ecommerce121_garage_vehicle"
+                    referenceColumn="id"
+                    onDelete="CASCADE"/>
+    </table>
+    <table name="ecommerce121_amasty_finder_value_index" resource="default" engine="innodb">
+        <column xsi:type="bigint" name="index_id" nullable="false" unsigned="true" identity="true"/>
+        <column xsi:type="int" name="value_id" nullable="false" unsigned="true"/>
+        <column xsi:type="int" name="parent_id" nullable="false" unsigned="true"/>
+        <column xsi:type="int" name="dropdown_id" nullable="false" unsigned="true"/>
+        <column xsi:type="text" name="name" nullable="false" />
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="index_id"/>
+        </constraint>
+        <index referenceId="AMASTY_FINDER_VALUE_IDX_VALUE_ID" indexType="btree">
+            <column name="value_id"/>
+        </index>
+    </table>
+</schema>

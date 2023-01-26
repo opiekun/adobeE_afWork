@@ -1,0 +1,25 @@
+<?php
+
+/** @var Magento\Framework\View\Element\Template $block */
+?>
+
+<?php if ($block->getChildHtml('stats1b') || $block->getChildHtml('stats2b') || $block->getChildHtml('stats3b')) : ?>
+    <div class="product attribute stats" id="info-stats">
+        <div class="value">
+            <table>
+                <tbody>
+                    <tr>
+                        <td><?= $block->getChildHtml('stats1b'); ?></td>
+                        <td><?= $block->getChildHtml('stats2b'); ?></td>
+                        <td><?= $block->getChildHtml('stats3b'); ?></td>
+                    </tr>
+                    <tr>
+                        <td>FLOW</td>
+                        <td>HP</td>
+                        <td>LBS x FT TQ</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+<?php endif; ?>

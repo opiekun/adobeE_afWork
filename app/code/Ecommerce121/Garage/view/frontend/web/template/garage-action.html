@@ -1,0 +1,11 @@
+<div class="buttons-set">
+    <!-- ko if: backUrl -->
+    <p class="back-link"><a data-bind="attr: { href: backUrl }"><small>« </small>Back</a></p>
+    <!-- /ko -->
+    <button type="button"
+            data-bind="event: { click: saveGarage }"
+            title="Save Garage"
+            class="save-vehicle-button">
+        <span>Save Garage</span>
+    </button>
+</div>

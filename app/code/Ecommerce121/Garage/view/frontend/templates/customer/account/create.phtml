@@ -1,0 +1,30 @@
+<?php
+/**
+ * @var Magento\Framework\View\Element\Template $block
+ * @var Magento\Framework\Escaper $escaper
+ * @var Ecommerce121\Garage\ViewModel\Customer\Account\FormData $formData
+ */
+$formData = $block->getFormData();
+?>
+
+<script type="text/x-magento-init">
+{
+    "*": {
+        "Magento_Ui/js/core/app": {
+            "components": {
+                "ecommerce121-garage-vehicle": {
+                    "component": "Ecommerce121_Garage/js/vehicle",
+                    "template": "Ecommerce121_Garage/vehicle",
+                    "title": "<?= $escaper->escapeHtml(__('MY GARAGE')) ?>",
+                    "dropdowns": <?= $formData->getDropdowns(true) ?>,
+                    "url": "<?= $formData->getUrl() ?>"
+                }
+            }
+        }
+    }
+}
+</script>
+
+<div class="ecommerce121-garage-vehicle" data-bind="scope: 'ecommerce121-garage-vehicle'">
+    <!-- ko template: getTemplate() --><!-- /ko -->
+</div>

@@ -1,0 +1,77 @@
+<?xml version="1.0"?>
+<csp_whitelist xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Csp/etc/csp_whitelist.xsd">
+    <policies>
+        <policy id="script-src">
+            <values>
+                <value id="apis_google_com" type="host">apis.google.com</value>
+                <value id="www_google_com" type="host">www.google.com</value>
+                <value id="js_agent_newrelic" type="host">js-agent.newrelic.com</value>
+                <value id="bam_nr_data" type="host">bam.nr-data.net</value>
+                <value id="cdn1_sandbox_affirm_com" type="host">cdn1-sandbox.affirm.com</value>
+                <value id="js_hs_scripts_com" type="host">js.hs-scripts.com</value>
+                <value id="hello_zonos_com" type="host">hello.zonos.com</value>
+                <value id="services_nofraud_com" type="host">services.nofraud.com</value>
+                <value id="d_ipv6_mmapiws_com" type="host">d-ipv6.mmapiws.com</value>
+                <value id="api_hubspot_com" type="host">api.hubspot.com</value>
+                <value id="js_hsleadflows_net" type="host">js.hsleadflows.net</value>
+                <value id="js_hs_banner_com" type="host">js.hs-banner.com</value>
+                <value id="js_usemessages_com" type="host">js.usemessages.com</value>
+                <value id="js_hs_analytics_net" type="host">js.hs-analytics.net</value>
+                <value id="cdn_iglobalstores_com" type="host">cdn.iglobalstores.com</value>
+                <value id="static_photoslurp_com" type="host">static.photoslurp.com</value>
+                <value id="connect_facebook_net" type="host">connect.facebook.net</value>
+                <value id="js_hscollectedforms_net" type="host">js.hscollectedforms.net</value>
+                <value id="www_gstatic_com" type="host">www.gstatic.com</value>
+                <value id="snapiu_searchspring_io" type="host">snapui.searchspring.io</value>
+                <value id="s9p4gi_searchspring_io" type="host">s9p4gi.a.searchspring.io</value>
+            </values>
+        </policy>
+        <policy id="frame-src">
+            <values>
+                <value id="www_google_com" type="host">www.google.com</value>
+                <value id="cdn1_sandbox_affirm_com" type="host">cdn1-sandbox.affirm.com</value>
+                <value id="sandbox_affirm_com" type="host">sandbox.affirm.com</value>
+                <value id="checkout_iglobalstores_com" type="host">checkout.iglobalstores.com</value>
+                <value id="app_hubspot_com" type="host">app.hubspot.com</value>
+                <value id="checkout_iglobalstores_com" type="host">checkout.iglobalstores.com</value>
+            </values>
+        </policy>
+        <policy id="font-src">
+            <values>
+                <value id="use_fontawesome_com" type="host">use.fontawesome.com</value>
+                <value id="data" type="host">data:</value>
+                <value id="unpkg_com" type="host">unpkg.com</value>
+            </values>
+        </policy>
+        <policy id="style-src">
+            <values>
+                <value id="use_fontawesome_com" type="host">use.fontawesome.com</value>
+                <value id="unpkg_com" type="host">unpkg.com</value>
+                <value id="fonts_googleapis_com" type="host">fonts.googleapis.com</value>
+            </values>
+        </policy>
+        <policy id="img-src">
+            <values>
+                <value id="cdn_assets_affirm_com" type="host">cdn-assets.affirm.com</value>
+                <value id="track_hubspot_com" type="host">track.hubspot.com</value>
+                <value id="hello_zonos_com" type="host">hello.zonos.com</value>
+                <value id="www_facebook_net" type="host">www.facebook.com</value>
+                <value id="forms_hsforms_com" type="host">forms.hsforms.com</value>
+                <value id="cdn-cgi_assets_rum" type="host">*/cdn-cgi/rum</value>
+            </values>
+        </policy>
+        <policy id="connect-src">
+            <values>
+                <value id="sandbox_affirm_com" type="host">sandbox.affirm.com</value>
+                <value id="tracker_affirm_com" type="host">tracker.affirm.com</value>
+                <value id="hello_zonos_com" type="host">hello.zonos.com</value>
+                <value id="api_hubspot_com" type="host">api.hubspot.com</value>
+                <value id="d_ipv6_mmapiws_com" type="host">d-ipv6.mmapiws.com</value>
+                <value id="forms_hubspot_com" type="host">forms.hubspot.com</value>
+                <value id="api_photoslurp_com" type="host">api.photoslurp.com</value>
+                <value id="bam_nr_data_net" type="host">bam.nr-data.net</value>
+                <value id="maps_googleapis_com" type="host">maps.googleapis.com</value>
+            </values>
+        </policy>
+    </policies>
+</csp_whitelist>

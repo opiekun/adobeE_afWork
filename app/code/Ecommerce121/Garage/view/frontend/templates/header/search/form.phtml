@@ -1,0 +1,32 @@
+<?php
+/**
+ * @var Magento\Framework\View\Element\Template $block
+ * @var Magento\Framework\Escaper $escaper
+ * @var Ecommerce121\Garage\ViewModel\Customer\Account\FormData $formData
+ */
+$formData = $block->getFormData();
+?>
+
+<script type="text/x-magento-init">
+{
+    "*": {
+        "Magento_Ui/js/core/app": {
+            "components": {
+                "ecommerce121-vehicle-search": {
+                    "component": "Ecommerce121_Garage/js/menu/search",
+                    "template": "Ecommerce121_Garage/menu/search",
+                    "dropdowns": <?= $formData->getDropdowns(true) ?>,
+                    "url": "<?= $formData->getUrl() ?>"
+                }
+            }
+        }
+    }
+}
+</script>
+
+<div class="ecommerce121-vehicle-search" data-bind="scope: 'ecommerce121-vehicle-search'">
+    <div id="garage-finder-overlay" class="garage-overlay-block">
+        <span class="garage-loader"></span>
+    </div>
+    <!-- ko template: getTemplate() --><!-- /ko -->
+</div>

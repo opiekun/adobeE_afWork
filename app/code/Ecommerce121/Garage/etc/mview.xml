@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Mview/etc/mview.xsd">
+    <view id="garage_finder_dropdown" class="Ecommerce\Garage\Model\Indexer\Dropdown\Virtual" group="indexer">
+        <subscriptions>
+            <table name="amasty_finder_value" entity_column="value_id" />
+        </subscriptions>
+    </view>
+</config>

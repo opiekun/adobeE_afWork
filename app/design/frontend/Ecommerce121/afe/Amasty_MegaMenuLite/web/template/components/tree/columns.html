@@ -1,0 +1,16 @@
+<!--
+    Amasty ammenu_columns_wrapper UiComponent
+    { elem: current_elem, uiClass: parent_ui }
+-->
+
+<section class="ammenu-category-columns"
+         if="$parent.elem"
+         data-bind="foreach: $parent.elem.elems">
+    <!-- ko scope: 'index = ammenu_tree_wrapper' -->
+        <!-- ko template: {
+            name: getTemplate(),
+            data: { columns: $root.elem.column_count === 0 ? $root.elem.elems.length : $root.elem.column_count || 1, activeLevel: $parent }
+        } -->
+        <!-- /ko -->
+    <!-- /ko -->
+</section>

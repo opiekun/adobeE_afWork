@@ -1,0 +1,39 @@
+diff --git a/vendor/ecommerce121/basket/Plugin/SlotPlugin.php b/vendor/ecommerce121/basket/Plugin/SlotPlugin.php
+index 9b93ad5..bd11397 100644
+--- a/vendor/ecommerce121/basket/Plugin/SlotPlugin.php
++++ b/vendor/ecommerce121/basket/Plugin/SlotPlugin.php
+@@ -60,20 +60,22 @@ class SlotPlugin
+     {
+         $data = $this->request->getParams();
+ 
+-        if ($data['type'] === self::PRODUCT_TYPE) {
+-            $productBasketId = $subject->getIdBySku($data['product']['sku']);
++        if (isset($data['type'])) {
++            if ($data['type'] === self::PRODUCT_TYPE) {
++                $productBasketId = $subject->getIdBySku($data['product']['sku']);
+ 
+-            $collectionSlot = $this->collection->addFieldToFilter('product_basket_id', ['in' => $productBasketId]);
+-            foreach ($collectionSlot as $simpleSlot) {
+-                $simpleSlot->delete();
+-            }
++                $collectionSlot = $this->collection->addFieldToFilter('product_basket_id', ['in' => $productBasketId]);
++                foreach ($collectionSlot as $simpleSlot) {
++                    $simpleSlot->delete();
++                }
+ 
+-            if (isset($data['links']['slot'])) {
+-                foreach ($data['links']['slot'] as $slotData) {
+-                    $slot = $this->associatedFactory->create();
+-                    $slot->setSlotId($slotData['id']);
+-                    $slot->setProductBasketId($productBasketId);
+-                    $slot->save();
++                if (isset($data['links']['slot'])) {
++                    foreach ($data['links']['slot'] as $slotData) {
++                        $slot = $this->associatedFactory->create();
++                        $slot->setSlotId($slotData['id']);
++                        $slot->setProductBasketId($productBasketId);
++                        $slot->save();
++                    }
+                 }
+             }
+         }

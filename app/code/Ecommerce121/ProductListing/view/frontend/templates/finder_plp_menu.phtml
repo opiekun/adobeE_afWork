@@ -1,0 +1,46 @@
+<?php
+/**
+ * @var Magento\Framework\View\Element\Template $block
+ * @var Ecommerce121\ProductListing\ViewModel\Menu $menu
+ * @var Magento\Framework\Escaper $escaper
+ */
+$menu = $block->getMenu();
+
+$currentCategory = $menu->getCurrentCategory();
+if (!$currentCategory) {
+    return;
+}
+$block->getLoadedProductCollection()->addAttributeToFilter('status', 1);
+$productCollection = $block->getLoadedProductCollection()->getItems();
+
+$middleLevelItems = $menu->getMiddleLevelItems($productCollection);
+$middleLevelActiveId = $menu->getActiveId($middleLevelItems);
+$lowLevelItems = $menu->getLowLevelFinderItems($middleLevelActiveId, $productCollection);
+$lowLevelActiveId = $menu->getActiveId($lowLevelItems, true);
+$menu->setTitle($block, $lowLevelActiveId);
+?>
+
+<div class="menu-middle-level">
+    <div class="category-nav">
+        <?php foreach ($middleLevelItems as $item) : ?>
+            <a href="<?= $escaper->escapeUrl($menu->buildFilterCategory($item)) ?>"
+               class="<?php if ($item->getId() == $middleLevelActiveId) { echo 'active'; } ?>">
+                <span><?= $escaper->escapeHtml($item->getName()) ?></span>
+            </a>
+        <?php endforeach; ?>
+    </div>
+
+    <div class="menu-low-level">
+        <?php foreach ($lowLevelItems as $item) : ?>
+            <div class="item">
+                <a href="<?= $escaper->escapeUrl($menu->buildFilterCategory($item)) ?>"
+                   class="<?php if ($item->getId() == $lowLevelActiveId) { echo 'active'; } ?>">
+                    <img src="<?= $escaper->escapeUrl($item->getImageUrl('thumbnail')) ?>"
+                         alt="<?= $escaper->escapeHtml($item->getName()) ?>"
+                         title="<?= $escaper->escapeHtml($item->getName()) ?>">
+                    <span><?= $escaper->escapeHtml($item->getName()) ?></span>
+                </a>
+            </div>
+        <?php endforeach; ?>
+    </div>
+</div>

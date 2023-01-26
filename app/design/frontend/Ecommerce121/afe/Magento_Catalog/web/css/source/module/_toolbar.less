@@ -1,0 +1,343 @@
+// /**
+//  * Copyright © Magento, Inc. All rights reserved.
+//  * See COPYING.txt for license details.
+//  */
+
+//
+//  Variables
+//  _____________________________________________
+
+@toolbar-mode-icon-font-size: 16px;
+@toolbar-background: transparent;
+@toolbar-element-background: @color-white;
+@toolbar-element__color: @color-gray37;
+@pager-action__background: @toolbar-element-background;
+@pager-action__hover__background: darken(@toolbar-element-background, 7%);
+@pager__font-weight: @font-weight__bold;
+
+//
+//  Common
+//  _____________________________________________
+
+& when (@media-common = true) {
+    .page-products {
+        .columns {
+            padding-top: 10px;
+            position: relative;
+            z-index: 1;
+        }
+    }
+
+    .toolbar {
+        &:extend(.abs-add-clearfix all);
+        margin-bottom: 15px;
+        text-align: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        select {
+            .lib-css(background-color, @toolbar-element-background);
+            .lib-css(box-shadow, @button__shadow);
+            .lib-font-size(14);
+            font-family: @font-family__roboto;
+            border-radius: 3px;
+        }
+        .sorter-action {
+            position: relative;
+            top: -2px;
+        }
+        &-amount {
+            left: 0;
+            line-height: @toolbar-mode-icon-font-size + 2;
+            margin: 0 auto 0 0;
+            padding: 7px 0;
+            text-align: left;
+            top: 0;
+            vertical-align: middle;
+            order: 1;
+            font-weight: 700;
+            text-transform: uppercase;
+            .lib-font-size(12);
+            .products.wrapper ~ .toolbar & {
+                display: none;
+            }
+        }
+
+        .page-with-filter & {
+            &-amount {
+                position: static;
+            }
+        }
+
+        &-products {
+            .lib-css(background-color, @toolbar-background);
+
+            .pages {
+                display: none;
+
+                .products.wrapper ~ & {
+                    display: block;
+                }
+            }
+        }
+
+        .pages {
+            margin-bottom: @indent__m;
+        }
+    }
+
+    .sorter {
+        float: right;
+        order: 2;
+
+        .sorter-label{
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        .page-products & {
+            margin-right: 30px;
+        }
+
+        .products.wrapper ~ .toolbar & {
+            display: none;
+        }
+
+        &-options {
+            margin: 0 @indent__xs 0 7px;
+            width: auto;
+        }
+
+        &-action {
+
+
+            .lib-icon-text-hide();
+
+            &:before {
+                content: "\f309";
+                display: inline-block;
+                vertical-align: middle;
+                font-weight:900;
+                font-family: 'Font Awesome 5 Free';
+                color: @color-black;
+                font-size: 16px;
+            }
+
+            &.sort-desc:before{
+                content: "\f30c";
+            }
+        }
+    }
+
+    .modes {
+        display: none;
+    }
+
+    .limiter {
+        order: 3;
+
+        .label{
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+        &-options {
+            margin: 0 5px 0 7px;
+            width: auto;
+        }
+
+        .limiter-text{
+            display: none;
+        }
+
+        &-label {
+            font-weight: 400;
+        }
+
+        .page-products .toolbar & {
+            display: inline-block;
+        }
+
+        .control {
+            display: inline-block;
+        }
+
+        .products.wrapper ~ .toolbar & {
+            display: none;
+        }
+    }
+
+
+}
+
+
+//
+//  Mobile
+//  _____________________________________________
+
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__s) {
+    body{
+        .columns .toolbar-products {
+            .toolbar-sorter.sorter{
+                margin-right: 10px;
+                .sorter-label{
+                    display: block;
+                    text-align: left;
+                }
+
+                select{
+                    max-width: 95px;
+                }
+            }
+            .toolbar-amount{
+                margin: 18px auto 0 0;
+            }
+            .field.limiter{
+                .label{
+                    display: block;
+                    text-align: left;
+                }
+                select{
+                    margin: 0;
+                }
+            }
+        }
+    }
+}
+
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__m) {
+    .columns .toolbar-products {
+        .toolbar-sorter.sorter{
+            order: 1;
+            margin-right: 15px;
+        }
+        .toolbar-amount{
+            order:2;
+            margin: 0 auto 0 0;
+        }
+        .field.limiter{
+            order:3;
+        }
+    }
+}
+
+//
+//  Desktop
+//  _____________________________________________
+
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__m) {
+    .toolbar-products {
+        margin-bottom: 0;
+    }
+}
+
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
+    .page-products {
+        .columns {
+            padding-top: 10px;
+            position: relative;
+            z-index: 1;
+        }
+    }
+
+    .toolbar-amount {
+        display: block;
+        float: left;
+        position: static;
+    }
+
+    .toolbar {
+        .products.wrapper ~ & .pages {
+            float: left;
+            margin-bottom: 0;
+        }
+    }
+
+    .modes {
+        display: inline-block;
+        float: left;
+        margin-right: 0;
+
+        .products.wrapper ~ .toolbar & {
+            display: none;
+        }
+    }
+
+    .modes-label {
+        &:extend(.abs-visually-hidden-desktop all);
+    }
+
+    .modes-mode {
+        .lib-css(background-color, @toolbar-element-background);
+        .lib-css(box-shadow, @button__shadow);
+        .lib-css(color, @toolbar-element__color);
+        border: 1px solid @border-color__base;
+        border-right: 0;
+        float: left;
+        font-weight: @font-weight__regular;
+        line-height: 1;
+        padding: 7px 10px;
+        text-align: center;
+
+        .modes-label + & {
+            border-radius: 3px 0 0 3px;
+        }
+
+        &:hover {
+            .lib-css(color, @toolbar-element__color);
+            background: darken(@toolbar-element-background, 2%);
+        }
+
+        &:last-child {
+            border-radius: 0 3px 3px 0;
+            border-right: 1px solid @border-color__base;
+        }
+
+        &.active {
+            .lib-css(box-shadow, @button__shadow-active);
+            background: darken(@toolbar-element-background, 7%);
+            color: @color-gray62;
+        }
+
+        .lib-icon-font(
+        @icon-grid,
+        @_icon-font-size: @toolbar-mode-icon-font-size,
+        @_icon-font-text-hide: true,
+        @_icon-font-color: @text__color__muted,
+        @_icon-font-color-hover: @text__color__muted
+        );
+    }
+
+    .sorter {
+        .page-products & {
+            position: static;
+        }
+    }
+
+    .mode-list {
+        &:before {
+            content: @icon-list;
+        }
+    }
+}
+
+//
+// Desktop
+// ---------------------------------------------
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__l) {
+    .page-products {
+        .columns {
+            padding-top: 20px;
+        }
+    }
+}
+
+//
+//  Mobile
+//  _____________________________________________
+
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__xs) {
+    .sorter-options {
+        margin: 0 2px;
+    }
+}

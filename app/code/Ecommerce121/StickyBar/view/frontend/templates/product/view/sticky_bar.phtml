@@ -1,0 +1,21 @@
+<?php /** @var $block Ecommerce121\StickyBar\Block\StickyBar */ ?>
+<div class="sticky-bar">
+    <div class="wrapper">
+        <div class="tabs">
+            <ul>
+                <?php foreach ($block->getTabs() as $tab) :?>
+                    <li class="nav" style="display: none;">
+                        <a class="<?= $block->escapeHtml($tab->getClass()) ?>"
+                           href="<?= $block->escapeHtml($tab->getLink()) ?>"><?= $block->escapeHtml($tab->getLabel()) ?></a>
+                    </li>
+                <?php endforeach; ?>
+            </ul>
+        </div>
+        <div class="right">
+            <?= $block->getChildHtml('bar.price'); ?>
+            <div class="actions" data-mage-init='{"Ecommerce121_StickyBar/js/sticky-actions": {} }'>
+                <?= $block->getChildHtml('sticky.bar.actions'); ?>
+            </div>
+        </div>
+    </div>
+</div>

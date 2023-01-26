@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+    xsi:noNamespaceSchemaLocation="../../../../../lib/internal/Magento/Framework/ObjectManager/etc/config.xsd">
+
+    <type name="NoFraud\Connect\Logger\Handler\Info">
+        <arguments>
+            <argument name="filesystem" xsi:type="object">Magento\Framework\Filesystem\Driver\File</argument>
+        </arguments>
+    </type>
+    <type name="NoFraud\Connect\Logger\Logger">
+        <arguments>
+            <argument name="name" xsi:type="string">NoFraud_Connect</argument>
+            <argument name="handlers"  xsi:type="array">
+                <item name="system" xsi:type="object">NoFraud\Connect\Logger\Handler\Info</item>
+            </argument>
+        </arguments>
+    </type>
+
+    <type name="Magento\Config\Model\Config\TypePool">
+        <arguments>
+            <argument name="sensitive" xsi:type="array">
+                <item name="nofraud_connect/general/api_token" xsi:type="string">1</item>
+            </argument>
+        </arguments>
+    </type>
+
+    <virtualType name="Magento\Sales\Model\ResourceModel\Order\Grid" type="Magento\Sales\Model\ResourceModel\Grid">
+        <arguments>
+            <argument name="columns">
+                <item name="nofraud_screened" xsi:type="string">sales_order.nofraud_screened</item>
+                <item name="nofraud_status" xsi:type="string">sales_order.nofraud_status</item>
+                <item name="nofraud_transaction_id" xsi:type="string">sales_order.nofraud_transaction_id</item>
+            </argument>
+        </arguments>
+    </virtualType>
+</config>

@@ -1,0 +1,42 @@
+<?php
+/**
+ * @var Magento\Framework\View\Element\Template $block
+ * @var Ecommerce121\ProductListing\ViewModel\Menu $menu
+ * @var Magento\Framework\Escaper $escaper
+ */
+$menu = $block->getMenu();
+
+$currentCategory = $menu->getCurrentCategory();
+if (!$currentCategory) {
+    return;
+}
+$middleLevelItems = $menu->getMiddleLevelItems();
+$middleLevelActiveId = $menu->getActiveId($middleLevelItems);
+$lowLevelItems = $menu->getLowLevelItems();
+$lowLevelActiveId = $menu->getActiveId($lowLevelItems);
+?>
+
+<div class="menu-middle-level">
+    <div class="category-nav">
+        <?php foreach ($middleLevelItems as $item) : ?>
+            <a href="<?= $escaper->escapeUrl($menu->buildCategoryProductTypeUrl($item)) ?>"
+               class="<?php if ($item->getId() == $middleLevelActiveId) { echo 'active'; } ?>">
+                <span><?= $escaper->escapeHtml($item->getName()) ?></span>
+            </a>
+        <?php endforeach; ?>
+    </div>
+
+    <div class="menu-low-level">
+        <?php foreach ($lowLevelItems as $item) : ?>
+            <div class="item">
+                <a href="<?= $escaper->escapeUrl($menu->buildCategoryProductTypeUrl($item)) ?>"
+                   class="<?php if ($item->getId() == $lowLevelActiveId) { echo 'active'; } ?>">
+                    <img src="<?= $escaper->escapeUrl($item->getImageUrl('thumbnail')) ?>"
+                         alt="<?= $escaper->escapeHtml($item->getName()) ?>"
+                             title="<?= $escaper->escapeHtml($item->getName()) ?>">
+                    <span><?= $escaper->escapeHtml($item->getName()) ?></span>
+                </a>
+            </div>
+        <?php endforeach; ?>
+    </div>
+</div>

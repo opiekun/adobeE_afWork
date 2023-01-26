@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <section id="ecommerce121_partfinder" showInDefault="1" showInStore="1" showInWebsite="1" translate="label" sortOrder="150">
+            <label>Part Finder</label>
+            <tab>ecommerce121_extensions</tab>
+            <resource>Ecommerce121_PartFinder::settings</resource>
+            <group id="general" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="10" translate="label">
+                <label>Settings</label>
+                <field id="exclude_category_id" translate="label" type="text" sortOrder="10" showInDefault="1" canRestore="1">
+                    <label>Exclude Categories Id</label>
+                    <comment>Values separated by coma</comment>
+                </field>
+                <field id="categories_to_display" translate="label" type="multiselect" sortOrder="10" showInDefault="1" canRestore="1">
+                    <label>Display on</label>
+                    <comment>Selected categories will show the finder</comment>
+                    <source_model>Ecommerce121\PartFinder\Model\Config\Source\CategoryList</source_model>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

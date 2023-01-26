@@ -1,0 +1,13 @@
+{
+    "amasty_finder_finder": {
+        "column": {
+            "range_by_first_dropdown": true
+        }
+    },
+    "amasty_finder_dropdown": {
+        "column": {
+            "hide_in_form": true,
+            "required": true
+        }
+    }
+}

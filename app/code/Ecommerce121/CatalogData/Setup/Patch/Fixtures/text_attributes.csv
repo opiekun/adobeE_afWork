@@ -1,0 +1,17 @@
+HP Gain;Cold Air Intake,Tuner Module (Scorcher GT/HD/BLUE/PRO),Turbo Inlet;XX HP
+HP RPM;Cold Air Intake,Tuner Module (Scorcher GT/HD/BLUE/PRO),Turbo Inlet;XX RPM
+TQ Gain;Cold Air Intake,Tuner Module (Scorcher GT/HD/BLUE/PRO),Turbo Inlet;XX TQ
+TQ RPM;Cold Air Intake,Tuner Module (Scorcher GT/HD/BLUE/PRO),Turbo Inlet;XX RPM
+Air Flow Increase;Cold Air Intake,Turbo Inlet;XX %
+Air Flow Rate - aFe;Cold Air Intake,Replacement Intake Air Filter,Turbo Inlet;XXX CFM
+Air Flow Rate - OE;Cold Air Intake,Turbo Inlet;XXX CFM
+Measured Flow Restriction;Cold Air Intake,Replacement Intake Air Filter,Turbo Inlet;XX IN H2O
+Filter Flange Diameter;Cold Air Intake,Replacement Intake Air Filter;XX IN
+Replacement Filter;Cold Air Intake;XX-XXXXX
+Filter Efficiency;Replacement Intake Air Filter;XX.XX %
+Dust Holding Capacity;Replacement Intake Air Filter;XX g
+Oil Quantity;Replacement Intake Air Filter;XX g
+Base Diameter;Replacement Intake Air Filter,Pre Filter;XX IN
+Top Diameter;Replacement Intake Air Filter,Pre Filter;XX IN
+Height;Replacement Intake Air Filter,Pre Filter;XX IN
+Voltage;Tuner Module (Scorcher GT/HD/BLUE/PRO),AGD,Exhaust/Trans Brake Controller - Brake Logic / Shift Logic,Sprint Booster;12V

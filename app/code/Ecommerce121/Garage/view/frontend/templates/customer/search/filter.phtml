@@ -1,0 +1,41 @@
+<?php
+/** @var Magento\Framework\View\Element\Template $block */
+/** @var Magento\Framework\Escaper $escaper */
+/** @var Ecommerce121\Garage\ViewModel\Search\Garage $garage */
+
+$garage = $block->getGarage();
+$vehicles = $garage->getVehicles();
+$arrayVehicle = json_decode($vehicles);
+if(is_array($arrayVehicle)){
+    foreach ($arrayVehicle as $key => $value){
+        if($value->label == ''){
+            unset($arrayVehicle[$key]);
+        }
+    }
+}
+$vehicles = json_encode($arrayVehicle);
+
+if ($vehicles):
+    ?>
+
+<script type="text/x-magento-init">
+{
+    "*": {
+        "Magento_Ui/js/core/app": {
+            "components": {
+                "ecommerce121-vehicle-filter": {
+                    "component": "Ecommerce121_Garage/js/vehicle/filter",
+                    "template": "Ecommerce121_Garage/vehicle/filter",
+                    "vehicles": <?= $vehicles ?>
+                }
+            }
+        }
+    }
+}
+</script>
+
+<div class="ecommerce121-vehicle-filter"
+     data-bind="scope: 'ecommerce121-vehicle-filter'">
+    <!-- ko template: getTemplate() --><!-- /ko -->
+</div>
+<?php endif; ?>
