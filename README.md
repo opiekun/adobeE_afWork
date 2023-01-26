@@ -1,1 +1,0 @@
-# adobeE_afWork
